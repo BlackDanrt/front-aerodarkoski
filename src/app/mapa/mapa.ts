@@ -1,10 +1,11 @@
-import {Component, AfterViewInit, OnDestroy, inject} from '@angular/core';
-import * as L from 'leaflet';
+import { Component, AfterViewInit, OnDestroy, inject } from '@angular/core';
+import { map as leafletMap, tileLayer, marker, latLng, divIcon, DivIcon } from 'leaflet';
+import type { Map as LeafletMap, Marker as LeafletMarker } from 'leaflet';
 import { interval, Subscription } from 'rxjs';
 import { switchMap, startWith } from 'rxjs/operators';
 import { Avion } from '../models/avion';
 import { AvionService } from '../services/avion-service';
-import {ToastService} from '../services/toast-service';
+import { ToastService } from '../services/toast-service';
 
 @Component({
   selector: 'app-mapa',
@@ -16,8 +17,8 @@ export class Mapa implements AfterViewInit, OnDestroy {
   private toast = inject(ToastService);
   private avionService = inject(AvionService);
 
-  private map!: L.Map;
-  private marcadores = new Map<string, L.Marker>();
+  private map!: LeafletMap;
+  private marcadores = new Map<string, LeafletMarker>();
   private datosAviones = new Map<string, {
     lat: number;
     lng: number;
@@ -30,7 +31,6 @@ export class Mapa implements AfterViewInit, OnDestroy {
 
   private readonly INTERVALO_MS = 5 * 60 * 1000;
   private readonly FPS = 30;
-
   private readonly FACTOR_VELOCIDAD = 0.1;
 
   ngAfterViewInit(): void {
@@ -40,7 +40,7 @@ export class Mapa implements AfterViewInit, OnDestroy {
   }
 
   private initMap(): void {
-    this.map = L.map('map', {
+    this.map = leafletMap('map', {
       center: [-14.235, -51.925],
       zoom: 4,
       minZoom: 4,
@@ -49,7 +49,7 @@ export class Mapa implements AfterViewInit, OnDestroy {
       maxBoundsViscosity: 1.0
     });
 
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
       maxZoom: 19,
       attribution: '© OpenStreetMap',
       noWrap: true
@@ -71,8 +71,8 @@ export class Mapa implements AfterViewInit, OnDestroy {
 
     this.intervaloAnimacion = window.setInterval(() => {
       this.datosAviones.forEach((datos, icao) => {
-        const marker = this.marcadores.get(icao);
-        if (!marker) return;
+        const markerRef = this.marcadores.get(icao);
+        if (!markerRef) return;
 
         const nuevaPos = this.calcularPosicionFutura(
           datos.lat,
@@ -85,7 +85,7 @@ export class Mapa implements AfterViewInit, OnDestroy {
         datos.lat = nuevaPos.lat;
         datos.lng = nuevaPos.lng;
 
-        marker.setLatLng([datos.lat, datos.lng]);
+        markerRef.setLatLng([datos.lat, datos.lng]);
       });
     }, intervaloFrame);
   }
@@ -97,9 +97,7 @@ export class Mapa implements AfterViewInit, OnDestroy {
     direccionGrados: number,
     segundos: number
   ): { lat: number; lng: number } {
-
     const velocidadReal = velocidadKnots * this.FACTOR_VELOCIDAD;
-
     const velocidadKmS = velocidadReal * 0.000514444;
     const distanciaKm = velocidadKmS * segundos;
     const rad = (direccionGrados * Math.PI) / 180;
@@ -123,15 +121,13 @@ export class Mapa implements AfterViewInit, OnDestroy {
         .map(a => a.flight.icaoNumber)
     );
 
-
-    this.marcadores.forEach((marker, icao) => {
+    this.marcadores.forEach((markerRef, icao) => {
       if (!icaosActivos.has(icao)) {
-        this.map.removeLayer(marker);
+        this.map.removeLayer(markerRef);
         this.marcadores.delete(icao);
         this.datosAviones.delete(icao);
       }
     });
-
 
     aviones.forEach(avion => {
       const geo = avion.geography;
@@ -140,14 +136,12 @@ export class Mapa implements AfterViewInit, OnDestroy {
       const id = avion.flight?.icaoNumber;
       if (!id) return;
 
-      const latlng = L.latLng(geo.latitude, geo.longitude);
+      const latlng = latLng(geo.latitude, geo.longitude);
       const icono = this.crearIconoAvion(geo.direction ?? 0);
       const popup = this.crearPopup(avion);
 
       if (this.marcadores.has(id)) {
-
         const datos = this.datosAviones.get(id);
-
         if (!datos) return;
 
         datos.lat = geo.latitude;
@@ -156,13 +150,11 @@ export class Mapa implements AfterViewInit, OnDestroy {
         datos.direccion = geo.direction ?? 0;
         datos.altitud = geo.altitude ?? 0;
 
-        const marker = this.marcadores.get(id);
-        marker.setLatLng(latlng);
-        marker.setIcon(icono);
-        marker.setPopupContent(popup);
-
+        const markerRef = this.marcadores.get(id);
+        markerRef?.setLatLng(latlng);
+        markerRef?.setIcon(icono);
+        markerRef?.setPopupContent(popup);
       } else {
-
         this.datosAviones.set(id, {
           lat: geo.latitude,
           lng: geo.longitude,
@@ -171,23 +163,23 @@ export class Mapa implements AfterViewInit, OnDestroy {
           altitud: geo.altitude ?? 0
         });
 
-        const marker = L.marker(latlng, { icon: icono })
+        const newMarker = marker(latlng, { icon: icono })
           .addTo(this.map)
           .bindPopup(popup);
-        this.marcadores.set(id, marker);
+        this.marcadores.set(id, newMarker);
       }
     });
   }
 
-  private crearIconoAvion(heading: number): L.DivIcon {
-    return L.divIcon({
+  private crearIconoAvion(heading: number): DivIcon {
+    return divIcon({
       className: '',
       html: `<div style="
-        transform: rotate(${heading}deg);
-        font-size: 22px;
-        line-height: 1;
-        filter: drop-shadow(1px 1px 2px rgba(0,0,0,0.6));
-      ">✈️</div>`,
+      transform: rotate(${heading}deg);
+      font-size: 22px;
+      line-height: 1;
+      filter: drop-shadow(1px 1px 2px rgba(0,0,0,0.6));
+    ">✈️</div>`,
       iconSize: [28, 28],
       iconAnchor: [14, 14],
       popupAnchor: [0, -16]
@@ -216,7 +208,7 @@ export class Mapa implements AfterViewInit, OnDestroy {
     if (this.suscripcion) this.suscripcion.unsubscribe();
     if (this.intervaloAnimacion) clearInterval(this.intervaloAnimacion);
 
-    this.marcadores.forEach((marker) => this.map.removeLayer(marker));
+    this.marcadores.forEach((markerRef) => this.map.removeLayer(markerRef));
     this.marcadores.clear();
     this.datosAviones.clear();
 
