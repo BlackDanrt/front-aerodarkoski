@@ -1,4 +1,6 @@
 import { Injectable } from '@angular/core';
+import { Rol } from '../enums/rol';
+import { TokenJwt } from '../models/token-jwt';
 
 /**
  * Servicio encargado del manejo del JWT.
@@ -38,17 +40,19 @@ export class JwtService {
    * Decodifica un token JWT (sin verificar firma)
    * @param token El token JWT a decodificar
    */
-  decodificarToken(token: string):string | null {
+  decodificarToken(token: string): TokenJwt | null {
     try {
       const base64Url = token.split('.')[1];
       const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+
       const jsonPayload = decodeURIComponent(
         atob(base64)
           .split('')
-          .map(c => `%${(`00${c.charCodeAt(0).toString(16)}`).slice(-2)}`)
+          .map(c => '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2))
           .join('')
       );
-      return JSON.parse(jsonPayload);
+
+      return JSON.parse(jsonPayload) as TokenJwt;
     } catch {
       return null;
     }
@@ -60,43 +64,30 @@ export class JwtService {
    */
   getIdUsuario(): number | null {
     const token = this.getToken();
-    if (!token) {
-      return null;
-    }
+    if (!token) return null;
 
-    const decoded = this.decodificarToken(token);
-    const id = decoded?.id || decoded?.idUsuario || decoded?.sub || null;
-
-    if (id) {
-      const numericId = typeof id === 'string' ? parseInt(id, 10) : id;
-      return numericId;
-    }
-
-    console.warn('[JwtService] No se encontró ID en el token');
-    return null;
+    return this.decodificarToken(token)?.id ?? null;
   }
+
 
   /**
    * Obtiene el rol del usuario desde el token JWT
    */
-  getRolUsuario(): string | null {
+  getRolUsuario(): Rol | null {
     const token = this.getToken();
     if (!token) return null;
 
-    const decoded = this.decodificarToken(token);
-    return decoded?.role || decoded?.rol || decoded?.authorities?.[0]?.authority || null;
+    return this.decodificarToken(token)?.role ?? null;
   }
-
 
   /**
    * Obtiene el nombre de usuario (subject) del token
    */
+
   getNombreUsuario(): string | null {
     const token = this.getToken();
     if (!token) return null;
 
-    const decoded = this.decodificarToken(token);
-    return decoded?.sub || decoded?.username || decoded?.nombreUsuario || null;
+    return this.decodificarToken(token)?.sub ?? null;
   }
-
 }

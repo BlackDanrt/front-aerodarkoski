@@ -1,5 +1,5 @@
-import {ChangeDetectorRef, Component, inject, signal} from '@angular/core';
-import * as bootstrap from 'bootstrap';
+import { ChangeDetectorRef, Component, inject, signal } from '@angular/core';
+import { Toast} from 'bootstrap';
 import {ToastService} from './services/toast-service';
 
 @Component({
@@ -27,12 +27,16 @@ export class App {
     this.toastExito = exito;
     this.cdr.detectChanges();
 
-    if(!document.getElementById('miToast')) return;
+    const toastEl = document.getElementById('miToast')!;
 
-    const toastEl = document.getElementById('miToast');
-    const instanciaAnterior = bootstrap.Toast.getInstance(toastEl);
-    if (instanciaAnterior) instanciaAnterior.dispose();
+    const instanciaAnterior = Toast.getInstance(toastEl);
+    if (instanciaAnterior) {
+      instanciaAnterior.dispose();
+    }
 
-    new bootstrap.Toast(toastEl, { delay: 3000, autohide: true }).show();
+    new Toast(toastEl, {
+      delay: 3000,
+      autohide: true,
+    }).show();
   }
 }
