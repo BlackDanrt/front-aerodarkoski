@@ -1,37 +1,39 @@
-import {inject, Injectable} from '@angular/core';
-import {HttpClient} from '@angular/common/http';
-import {Usuario} from '../models/usuario';
-import {Rol} from '../enums/rol';
-import {jwtDecode} from 'jwt-decode';
+import { inject, Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Usuario } from '../models/usuario';
+import { Rol } from '../enums/rol';
+import { jwtDecode } from 'jwt-decode';
+import { TokenJwt } from '../models/token-jwt';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
   private cliente = inject(HttpClient);
-  private  readonly urlBase = 'http://localhost:8080/auth';
+  private readonly urlBase = 'http://localhost:8080/auth';
 
-  registrar(usuario:Usuario){
-    return this.cliente.post(`${this.urlBase}/register`, usuario, {responseType: "text"});
+  registrar(usuario: Usuario) {
+    return this.cliente.post(`${this.urlBase}/register`, usuario, { responseType: 'text' });
   }
 
-  logIn(usuario:Usuario){
-    return this.cliente.post<{token:String}>(`${this.urlBase}/login`, usuario);
+  logIn(usuario: Usuario) {
+    return this.cliente.post<{ token: string }>(`${this.urlBase}/login`, usuario);
   }
 
-  getUsuarioToken(): any {
+  getUsuarioToken(): TokenJwt | null {
     const token = localStorage.getItem('token');
     if (!token) return null;
-    return jwtDecode(token);
+
+    return jwtDecode<TokenJwt>(token);
   }
 
-  getIdUsuario(): number {
+  getIdUsuario(): number | null {
     const token = this.getUsuarioToken();
-    return token?.id;
+    return token?.id ?? null;
   }
 
-  getRolUsuario(): Rol {
+  getRolUsuario(): Rol | null {
     const token = this.getUsuarioToken();
-    return token?.role;
+    return token?.role ?? null;
   }
 }

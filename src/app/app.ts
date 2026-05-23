@@ -27,7 +27,8 @@ export class App {
     this.toastExito = exito;
     this.cdr.detectChanges();
 
-    const toastEl = document.getElementById('miToast')!;
+    if(!document.getElementById('miToast')) return null;
+    const toastEl = document.getElementById('miToast');
 
     const instanciaAnterior = Toast.getInstance(toastEl);
     if (instanciaAnterior) {
