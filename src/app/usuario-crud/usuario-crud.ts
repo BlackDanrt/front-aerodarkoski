@@ -114,11 +114,11 @@ export class UsuarioCrud {
         this.cdr.detectChanges();
       })
     ).subscribe({
-      next: (response: any) => {
+      next: (response) => {
         const body = response?.body || response;
         let lista: Usuario[] = [];
 
-        if (body && body.usuarios) {
+        if (body?.usuarios) {
           lista = body.usuarios;
         } else if (Array.isArray(body)) {
           lista = body;
@@ -127,7 +127,7 @@ export class UsuarioCrud {
 
         this.usuarios = lista.filter(u => u.id !== this.idUsuarioActual);
       },
-      error: (err) => {
+      error: () => {
         this.mensajeError = 'Error al cargar los usuarios. Intente nuevamente.';
         this.usuarios = [];
       }
@@ -257,7 +257,7 @@ export class UsuarioCrud {
       }
     }
 
-    if (this.usuarioForm.correo != this.confirmarCorreo) {
+    if (this.usuarioForm.correo !== this.confirmarCorreo) {
       this.mensajeError = 'Los correos no coinciden';
       this.cdr.detectChanges();
       return;
@@ -283,9 +283,9 @@ export class UsuarioCrud {
           this.cdr.detectChanges();
         })
       ).subscribe({
-        next: (resp: any) => {
+        next: (resp: string) => {
           this.ngZone.run(() => {
-            this.mensajeExito = typeof resp === 'string' ? resp : 'Usuario actualizado correctamente';
+            this.mensajeExito = resp;
             this.cerrarModal();
             this.cargarUsuarios();
           });
@@ -304,9 +304,9 @@ export class UsuarioCrud {
           this.cdr.detectChanges();
         })
       ).subscribe({
-        next: (resp: any) => {
+        next: (resp: string) => {
           this.ngZone.run(() => {
-            this.mensajeExito = typeof resp === 'string' ? resp : 'Usuario creado correctamente';
+            this.mensajeExito = resp;
             this.cerrarModal();
             this.cargarUsuarios();
           });
@@ -360,9 +360,9 @@ export class UsuarioCrud {
         this.cdr.detectChanges();
       })
     ).subscribe({
-      next: (resp: any) => {
+      next: (resp: string) => {
         this.ngZone.run(() => {
-          this.mensajeExito = typeof resp === 'string' ? resp : 'Usuario eliminado correctamente';
+          this.mensajeExito = resp;
           this.cargarUsuarios();
         });
       },

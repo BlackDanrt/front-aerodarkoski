@@ -1,4 +1,4 @@
-import {ChangeDetectorRef, Component, inject, OnInit} from '@angular/core';
+import {ChangeDetectorRef, Component, inject} from '@angular/core';
 import {AvionService} from '../services/avion-service';
 import {Avion} from '../models/avion';
 import {ToastService} from '../services/toast-service';
@@ -59,11 +59,11 @@ export class Busqueda {
   }
 
   definirTipoBusqueda(codigo:string, tipoBusqueda:number){
-    if (tipoBusqueda == 1) {
-      if(codigo.length == 3) return TipoBusqueda.IATA;
+    if (tipoBusqueda === 1) {
+      if(codigo.length === 3) return TipoBusqueda.IATA;
       else return TipoBusqueda.ICAO;
     } else {
-      if(codigo.length == 5) return TipoBusqueda.FLIGHT_IATA;
+      if(codigo.length === 5) return TipoBusqueda.FLIGHT_IATA;
       else return TipoBusqueda.FLIGHT_ICAO;
     }
   }
@@ -75,15 +75,15 @@ export class Busqueda {
         this.cdr.detectChanges();
       })
     ).subscribe({
-      next: (response: any) => {
-          if(response == null || response.length == 0){
+      next: (response) => {
+          if(response === null || response.length === 0){
             this.mensajeError = 'No se han encontrado aviones que coincidan con tu busqueda';
           } else {
             this.aviones = response;
             this.cargaExitosa = true;
           }
           this.guardarHistorial(codigo, tipoBusqueda);
-      }, error: (error: any) => {
+      }, error: () => {
           this.toast.mostrar('Error al realizar la busqueda',false);
       }
     });
@@ -96,15 +96,15 @@ export class Busqueda {
     if (!idUsuario) return;
 
     this.historial = {
-      idUsuario: idUsuario,
+      idUsuario,
       busqueda: codigo,
-      tipoBusqueda: tipoBusqueda,
+      tipoBusqueda,
     };
 
     this.historialService.crear(this.historial).subscribe({
-      next: (response: any) => {
+      next: () => {
         this.toast.mostrar('La busqueda ha sido agregada a tu hsitorial exitosamente', true);
-      }, error: (error: any) => {
+      }, error: () => {
         this.toast.mostrar('Error al agregar tu busqueda a tu historial', false);
       }
     });

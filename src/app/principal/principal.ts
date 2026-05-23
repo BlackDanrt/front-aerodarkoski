@@ -12,8 +12,8 @@ export class Principal {
   private router = inject(Router);
 
   buscar(codigo:string, valor:string){
-    let num = parseInt(valor);
-    setTimeout(() => this.router.navigate(['/busqueda/'+codigo+'/'+num]), 2000);
+    const num = parseInt(valor);
+    setTimeout(() => this.router.navigate([`/busqueda${codigo}/${num}`]), 2000);
   }
 
 }

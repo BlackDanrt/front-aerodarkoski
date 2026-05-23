@@ -1,5 +1,4 @@
 import {ChangeDetectorRef, Component, inject, signal} from '@angular/core';
-import { RouterOutlet } from '@angular/router';
 import * as bootstrap from 'bootstrap';
 import {ToastService} from './services/toast-service';
 
@@ -28,7 +27,9 @@ export class App {
     this.toastExito = exito;
     this.cdr.detectChanges();
 
-    const toastEl = document.getElementById('miToast')!;
+    if(!document.getElementById('miToast')) return;
+
+    const toastEl = document.getElementById('miToast');
     const instanciaAnterior = bootstrap.Toast.getInstance(toastEl);
     if (instanciaAnterior) instanciaAnterior.dispose();
 

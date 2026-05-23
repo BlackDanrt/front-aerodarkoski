@@ -2,9 +2,6 @@ import {ChangeDetectorRef, Component, inject, OnInit} from '@angular/core';
 import {debounceTime, distinctUntilChanged, finalize, Subject} from 'rxjs';
 import {AuditoriaService} from '../services/auditoria-service';
 import {Auditoria} from '../models/auditoria';
-import {TipoAccion} from '../enums/tipo-accion';
-import {Rol} from '../enums/rol';
-import {Servicio} from '../enums/servicio';
 import {HistorialService} from '../services/historial-service';
 
 @Component({
@@ -76,11 +73,11 @@ export class AuditoriaComponent implements OnInit {
         this.cdr.detectChanges();
       })
     ).subscribe({
-      next: (response: any) => {
+      next: (response) => {
         const body = response?.body || response;
         let lista: Auditoria[] = [];
 
-        if (body && body.auditorias) {
+        if (body?.auditorias) {
           lista = body.auditorias.reverse();
         } else if (Array.isArray(body)) {
           lista = body.reverse();

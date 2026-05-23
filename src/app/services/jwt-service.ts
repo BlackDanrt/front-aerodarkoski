@@ -10,8 +10,6 @@ import { Injectable } from '@angular/core';
 })
 export class JwtService {
 
-  constructor() { }
-
   /**
    * Obtiene el token JWT almacenado en localStorage
    */
@@ -24,9 +22,8 @@ export class JwtService {
    * @param token El token JWT a almacenar
    */
   setToken(token: string): void {
-    if (token && token.trim()) {
+    if (token?.trim()) {
       localStorage.setItem('token', token.trim());
-    } else {
     }
   }
 
@@ -41,18 +38,18 @@ export class JwtService {
    * Decodifica un token JWT (sin verificar firma)
    * @param token El token JWT a decodificar
    */
-  decodificarToken(token: string): any {
+  decodificarToken(token: string):string | null {
     try {
       const base64Url = token.split('.')[1];
       const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
       const jsonPayload = decodeURIComponent(
         atob(base64)
           .split('')
-          .map(c => '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2))
+          .map(c => `%${(`00${c.charCodeAt(0).toString(16)}`).slice(-2)}`)
           .join('')
       );
       return JSON.parse(jsonPayload);
-    } catch (e) {
+    } catch {
       return null;
     }
   }

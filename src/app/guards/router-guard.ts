@@ -3,7 +3,7 @@ import {inject} from '@angular/core';
 import {AuthService} from '../services/auth-service';
 import {ToastService} from '../services/toast-service';
 
-export const routerGuard: CanActivateFn = (route, state) => {
+export const routerGuard: CanActivateFn = (route) => {
 
   /** Instancia del servicio de autenticación */
   const auth = inject(AuthService);
@@ -17,7 +17,7 @@ export const routerGuard: CanActivateFn = (route, state) => {
   const token = auth.getUsuarioToken();
 
   if (!token) {
-    alert('Para acceder a la página debes iniciar sesión');
+    toast.mostrar('Para acceder a la página debes iniciar sesión', false);
     router.navigate(['/login']);
     return false;
   }

@@ -43,7 +43,7 @@ export class Login {
         this.toast.mostrar('¡Bienvenido!', true);
         setTimeout(() => this.router.navigate(['/principal']), 2000);
       },
-      error: (err) => {
+      error: () => {
         this.cargando = false;
         this.toast.mostrar('El nombre de usuario o la contraseña son incorrectos', false);
       }

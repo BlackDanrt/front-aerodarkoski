@@ -101,11 +101,11 @@ export class Perfil {
       correo: this.usuario.correo
     };
 
-    if (hayContrasenia) {
-      payload.contrasenia = this.usuario.contrasenia;
-    }
+    if (hayContrasenia) payload.contrasenia = this.usuario.contrasenia;
 
-    this.usuarioService.actualizar(payload as Usuario, this.usuario.id!).pipe(
+    if(this.usuario.id === null) return;
+
+    this.usuarioService.actualizar(payload as Usuario, this.usuario.id).pipe(
       finalize(() => {
         this.guardando = false;
         this.cdr.detectChanges();

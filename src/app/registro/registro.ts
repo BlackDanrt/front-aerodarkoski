@@ -38,12 +38,12 @@ export class Registro {
     if(this.cargando) return;
     else this.cargando = true;
 
-    if(this.usuario.contrasenia != this.confirmarContrasenia) {
+    if(this.usuario.contrasenia !== this.confirmarContrasenia) {
       this.cargando = false;
       this.toast.mostrar('Las contraseñas no coinciden', false)
       return;
     }
-    if(this.usuario.correo != this.confirmarCorreo) {
+    if(this.usuario.correo !== this.confirmarCorreo) {
       this.cargando = false;
       this.toast.mostrar('Las direcciones de corrreo no coinciden', false)
       return;

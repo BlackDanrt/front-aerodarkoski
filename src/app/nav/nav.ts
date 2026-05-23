@@ -13,22 +13,20 @@ export class Nav {
   private router = inject(Router);
 
   isAutenticado() {
-    if(this.jwt.getToken()) return true;
-    else return false;
+    return this.jwt.getToken() !== null;
   }
 
   cerrarSesion() {
     this.jwt.removerToken();
-  this.router.navigate(['login']);
+    this.router.navigate(['login']);
   }
 
   isAdministrador(){
-    if(this.jwt.getRolUsuario() == 'ADMINISTRADOR') return true;
-    else return false;
+    return this.jwt.administrador === 'ADMINISTRADOR';
   }
 
   navegarAHistorial(){
-    let idUsuario = this.jwt.getIdUsuario();
-    this.router.navigate(['/historial/'+idUsuario]);
+    const idUsuario = this.jwt.getIdUsuario();
+    this.router.navigate([`/historial/${idUsuario}`]);
   }
 }

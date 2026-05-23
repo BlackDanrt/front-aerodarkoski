@@ -12,11 +12,11 @@ export class AuthService {
   private  readonly urlBase = 'http://localhost:8080/auth';
 
   registrar(usuario:Usuario){
-    return this.cliente.post(this.urlBase+"/register", usuario, {responseType: "text"});
+    return this.cliente.post(`${this.urlBase}/register`, usuario, {responseType: "text"});
   }
 
   logIn(usuario:Usuario){
-    return this.cliente.post<{token:String}>(this.urlBase+"/login", usuario);
+    return this.cliente.post<{token:String}>(`${this.urlBase}/login`, usuario);
   }
 
   getUsuarioToken(): any {

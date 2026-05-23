@@ -32,7 +32,7 @@ export class HistorialComponent {
 
 
   ngOnInit(){
-    let idUsuario = this.jwt.getIdUsuario();
+    const idUsuario = this.jwt.getIdUsuario();
     if(idUsuario == null) {
       this.toast.mostrar('Error al cargar el historial de usuario', false);
       this.jwt.removerToken();
@@ -49,9 +49,9 @@ export class HistorialComponent {
         this.cdr.detectChanges();
     })
     ).subscribe({
-      next: (response: any) => {
+      next: (response) => {
           this.historiales = response.body.reverse();
-      }, error: (error: any) => {
+      }, error: () => {
           this.mensajeError = 'Error al cargar los historiales, intente nuevamente';
           this.historiales = [];
       }
@@ -60,13 +60,13 @@ export class HistorialComponent {
   }
 
   definirValor(tipoBusqueda:TipoBusqueda){
-    if(tipoBusqueda == 'IATA' || tipoBusqueda == 'ICAO') return 1
+    if(tipoBusqueda === 'IATA' || tipoBusqueda === 'ICAO') return 1
     else return 2;
   }
 
   buscar(historial:Historial){
-      let valor = this.definirValor(historial.tipoBusqueda,);
-      this.router.navigate(['/busqueda/'+historial.busqueda+'/'+valor]);
+      const valor = this.definirValor(historial.tipoBusqueda,);
+      this.router.navigate([`/busqueda/${historial.busqueda}/${valor}`]);
   }
 
 }

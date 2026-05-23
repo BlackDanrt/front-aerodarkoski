@@ -62,7 +62,7 @@ export class Mapa implements AfterViewInit, OnDestroy {
       switchMap(() => this.avionService.obtenerTodos())
     ).subscribe({
       next: (aviones) => this.actualizarAviones(aviones),
-      error: (err) => this.toast.mostrar("Error al cargar los aviones", false)
+      error: () => this.toast.mostrar("Error al cargar los aviones", false)
     });
   }
 
@@ -146,14 +146,17 @@ export class Mapa implements AfterViewInit, OnDestroy {
 
       if (this.marcadores.has(id)) {
 
-        const datos = this.datosAviones.get(id)!;
+        const datos = this.datosAviones.get(id);
+
+        if (!datos) return;
+
         datos.lat = geo.latitude;
         datos.lng = geo.longitude;
         datos.velocidad = avion.speed?.horizontal ?? 0;
         datos.direccion = geo.direction ?? 0;
         datos.altitud = geo.altitude ?? 0;
 
-        const marker = this.marcadores.get(id)!;
+        const marker = this.marcadores.get(id);
         marker.setLatLng(latlng);
         marker.setIcon(icono);
         marker.setPopupContent(popup);
