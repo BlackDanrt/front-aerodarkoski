@@ -22,12 +22,12 @@ export class App {
     });
   }
 
-  private mostrarToast(mensaje: string, exito: boolean) {
+  private mostrarToast(mensaje: string, exito: boolean):void {
     this.mensajeToast = mensaje;
     this.toastExito = exito;
     this.cdr.detectChanges();
 
-    if(!document.getElementById('miToast')) return null;
+    if(!document.getElementById('miToast')) return;
     const toastEl = document.getElementById('miToast');
 
     const instanciaAnterior = Toast.getInstance(toastEl);
