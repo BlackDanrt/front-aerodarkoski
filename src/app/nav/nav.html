@@ -1,0 +1,18 @@
+<nav class="navbar">
+  <div class="logo">
+    <span class="env">Tracker Aéreo</span>
+    <span class="darkoski">AERODARKOSKI</span>
+  </div>
+
+  <ul class="menu">
+    <li *ngIf="!isAutenticado()"><a routerLink="/login">Acceder</a></li>
+    <li *ngIf="!isAutenticado()"><a routerLink="/registro">Registrarse</a></li>
+    <li *ngIf="!isAutenticado()"><a routerLink="/main">Pagina Principal</a></li>
+    <li *ngIf="isAutenticado()"><a routerLink="/perfil">Perfil</a></li>
+    <li *ngIf="isAdministrador()"><a routerLink="/usuarios">Usuarios</a></li>
+    <li *ngIf="isAdministrador()"><a routerLink="/auditoria">Auditoria</a></li>
+    <li *ngIf="isAutenticado()"><a routerLink="/principal">Principal</a></li>
+    <li *ngIf="isAutenticado()"><a (click)="navegarAHistorial()" >Historial</a></li>
+    <li *ngIf="isAutenticado()"><a (click)="cerrarSesion()">Cerrar Sesión</a></li>
+  </ul>
+</nav>

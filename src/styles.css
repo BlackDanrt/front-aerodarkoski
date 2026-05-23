@@ -1,0 +1,22 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100vh;        /* ← fijo, no min-height */
+  overflow: hidden;
+  background: linear-gradient(135deg, #F0F4F8 0%, #D9E2EC 100%) !important;
+  font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  scroll-behavior: smooth;
+}
+
+app-root {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;        /* ← fijo también */
+  overflow: hidden;
+}
+
+router-outlet + * {
+  flex: 1;
+  overflow: hidden;
+  min-height: 0;        /* ← necesario en flexbox para que no desborde */
+}

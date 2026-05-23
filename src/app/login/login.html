@@ -1,0 +1,48 @@
+<div class="login-recuadro">
+  <div class="login-carta">
+    <div class="login-header">
+      <h1 class="marca-neon">Login</h1>
+    </div>
+
+    <form class="login-form">
+      <div class="input-fila">
+        <label class="fila-label">USUARIO</label>
+        <div class="input-espacio compact-input">
+          <input
+          type="text"
+           name="username"
+          [(ngModel)]="usuario.nombreUsuario"
+            placeholder="Ej: Desinstala3000"
+            class="oscuro-input">
+        </div>
+      </div>
+
+      <div class="input-fila">
+        <label class="fila-label">CONTRASEÑA</label>
+        <div class="input-espacio compact-input">
+          <input
+            type="password"
+            name="password"
+            [(ngModel)]="usuario.contrasenia"
+            placeholder="Ej: Dr12345@"
+            class="oscuro-input">
+        </div>
+      </div>
+
+      <button
+        type="submit"
+        class="btn-crear"
+        (click)="login()"
+        [disabled]="cargando">
+
+        <span *ngIf="!cargando">Iniciar Sesión</span>
+
+        <span *ngIf="cargando" class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
+        <span *ngIf="cargando">Iniciando Sesión...</span>
+
+      </button>
+    </form>
+
+  </div>
+</div>
+

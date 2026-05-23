@@ -1,0 +1,61 @@
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: linear-gradient(to bottom, #00376E 0%, #000000 100%);
+  padding: 25px 40px;
+  width: 100%;
+  box-sizing: border-box;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  border-bottom: 2px solid #061014;
+}
+
+.logo {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.1;
+  color: #fff;
+  user-select: none;
+}
+
+.env {
+  margin-left: 5px;
+  font-size: 14px;
+  font-weight: bold;
+  letter-spacing: 1px;
+  opacity: 0.9;
+}
+
+.darkoski {
+  font-size: 26px;
+  font-weight: 900;
+  font-style: italic;
+  text-shadow: 1px 1px 2px rgba(54, 151, 186);
+}
+
+.menu {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  gap: 30px;
+}
+
+.menu li a {
+  text-decoration: none;
+  color: #b3b3b3;
+  font-size: 16px;
+  font-weight: 400;
+  transition: all 0.3s ease;
+  padding-bottom: 5px;
+  border-bottom: 2px solid transparent;
+}
+
+.menu li a:hover {
+  color: #ffffff;
+  border-bottom: 2px solid #27B7F5;
+}
+
+
