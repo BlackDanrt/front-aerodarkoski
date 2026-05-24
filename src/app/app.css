@@ -1,0 +1,9 @@
+.contenido-con-navbar-fijo {
+  padding-top: 70px;
+}
+
+@media (max-width: 768px) {
+  .contenido-con-navbar-fijo {
+    padding-top: 50px;
+  }
+}

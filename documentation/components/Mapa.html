@@ -1,0 +1,2426 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>proyectofinal documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+          <script>
+               // Blocking script to avoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+          </script>
+          <script>
+              // --- Iframe navigation tracking for Template Playground ---
+              function sendCurrentUrlToParent() {
+                  if (window.parent && window.parent !== window) {
+                      window.parent.postMessage({
+                          type: 'compodoc-iframe-navigate',
+                          url: window.location.pathname + window.location.hash
+                      }, '*');
+                  }
+              }
+              window.addEventListener('hashchange', sendCurrentUrlToParent, false);
+              window.addEventListener('popstate', sendCurrentUrlToParent, false);
+              window.addEventListener('DOMContentLoaded', sendCurrentUrlToParent, false);
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-md-none p-0">
+               <div class="d-flex">
+                    <a href="../" class="navbar-brand">proyectofinal documentation</a>
+                    <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+               </div>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="d-none d-md-block menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+
+
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">Components</li>
+  <li class="breadcrumb-item"
+  >
+  Mapa</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+            <a href="#info" class="nav-link active"
+                role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li class="nav-item">
+            <a href="#source" class="nav-link"
+                role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li class="nav-item">
+            <a href="#templateData" class="nav-link"
+                role="tab" id="templateData-tab" data-bs-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li class="nav-item">
+            <a href="#styleData" class="nav-link"
+                role="tab" id="styleData-tab" data-bs-toggle="tab" data-link="style">Styles</a>
+        </li>
+        <li class="nav-item">
+            <a href="#tree" class="nav-link"
+                role="tab" id="tree-tab" data-bs-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/mapa/mapa.ts</code>
+</p>
+
+
+    <p class="comment">
+        <h3>Description</h3>
+    </p>
+    <p class="comment">
+        <p>Componente encargado de visualizar en un mapa interactivo
+la posición de los aviones en tiempo real y los reportes
+meteorológicos asociados a distintos aeropuertos.</p>
+
+    </p>
+
+
+    <p class="comment">
+        <h3>Implements</h3>
+    </p>
+    <p class="comment">
+                    <code><a href="https://angular.io/api/core/AfterViewInit" target="_blank" >AfterViewInit</a></code>
+                    <code><a href="https://angular.io/api/core/OnDestroy" target="_blank" >OnDestroy</a></code>
+    </p>
+
+
+<section data-compodoc="block-metadata">
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover metadata">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>app-mapa</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">styleUrls</td>
+                <td class="col-md-9"><code>./mapa.css</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./mapa.html</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-index">
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#avionService" >avionService</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#climaService" >climaService</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#COORDENADAS_AEROPUERTOS" >COORDENADAS_AEROPUERTOS</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#datosAviones" >datosAviones</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#FACTOR_VELOCIDAD" >FACTOR_VELOCIDAD</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#FPS" >FPS</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#INTERVALO_MS" >INTERVALO_MS</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                    <span class="modifier">Optional</span>
+                                <a href="#intervaloAnimacion" >intervaloAnimacion</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#map" >map</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#marcadores" >marcadores</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#marcadoresClima" >marcadoresClima</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#suscripcion" >suscripcion</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#toast" >toast</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#actualizarAviones" >actualizarAviones</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#calcularPosicionFutura" >calcularPosicionFutura</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#cargarClima" >cargarClima</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#crearIconoAvion" >crearIconoAvion</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#crearIconoClima" >crearIconoClima</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#crearPopup" >crearPopup</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#crearPopupClima" >crearPopupClima</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#iniciarLoopAnimacion" >iniciarLoopAnimacion</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#iniciarTracking" >iniciarTracking</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#initMap" >initMap</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#mostrarMarcadoresClima" >mostrarMarcadoresClima</a>
+                            </li>
+                            <li>
+                                <a href="#ngAfterViewInit" >ngAfterViewInit</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnDestroy" >ngOnDestroy</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#obtenerEmojiClima" >obtenerEmojiClima</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+
+
+
+
+
+    <section data-compodoc="block-methods">
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="actualizarAviones"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>actualizarAviones</b></span>
+                        <a href="#actualizarAviones"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>actualizarAviones(aviones: <a href="../interfaces/Avion.html" target="_self">Avion[]</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="233"
+                                    class="link-to-prism">src/app/mapa/mapa.ts:233</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Actualiza los marcadores de los aviones
+visibles en el mapa.</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                                <td>Description</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>aviones</td>
+                                            <td>
+                                                            <code><a href="../interfaces/Avion.html" target="_self" >Avion[]</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <p>Lista de aeronaves obtenidas desde el servicio.</p>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="calcularPosicionFutura"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>calcularPosicionFutura</b></span>
+                        <a href="#calcularPosicionFutura"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>calcularPosicionFutura(lat: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>, lng: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>, velocidadKnots: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>, direccionGrados: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>, segundos: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="203"
+                                    class="link-to-prism">src/app/mapa/mapa.ts:203</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Calcula una posición futura a partir de la ubicación,
+velocidad y rumbo actuales de una aeronave.</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                                <td>Description</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>lat</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <p>Latitud actual.</p>
+
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                                <td>lng</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <p>Longitud actual.</p>
+
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                                <td>velocidadKnots</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <p>Velocidad en nudos.</p>
+
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                                <td>direccionGrados</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <p>Rumbo en grados.</p>
+
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                                <td>segundos</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <p>Tiempo transcurrido.</p>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>    <code>literal type</code>
+
+                        </div>
+                            <div class="io-description">
+                                <p>Nueva posición calculada.</p>
+
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="cargarClima"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>cargarClima</b></span>
+                        <a href="#cargarClima"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>cargarClima()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="336"
+                                    class="link-to-prism">src/app/mapa/mapa.ts:336</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Obtiene y muestra los reportes meteorológicos.</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="crearIconoAvion"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>crearIconoAvion</b></span>
+                        <a href="#crearIconoAvion"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>crearIconoAvion(heading: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="293"
+                                    class="link-to-prism">src/app/mapa/mapa.ts:293</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Genera el icono utilizado para representar
+una aeronave en el mapa.</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                                <td>Description</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>heading</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <p>Dirección de la aeronave.</p>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>    <code>DivIcon</code>
+
+                        </div>
+                            <div class="io-description">
+                                <p>Icono configurado.</p>
+
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="crearIconoClima"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>crearIconoClima</b></span>
+                        <a href="#crearIconoClima"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>crearIconoClima(clima: <a href="../interfaces/Clima.html" target="_self">Clima</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="374"
+                                    class="link-to-prism">src/app/mapa/mapa.ts:374</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Genera el icono correspondiente a las condiciones
+meteorológicas reportadas.</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                                <td>Description</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>clima</td>
+                                            <td>
+                                                            <code><a href="../interfaces/Clima.html" target="_self" >Clima</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <p>Información meteorológica.</p>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>    <code>DivIcon</code>
+
+                        </div>
+                            <div class="io-description">
+                                <p>Icono configurado.</p>
+
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="crearPopup"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>crearPopup</b></span>
+                        <a href="#crearPopup"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>crearPopup(a: <a href="../interfaces/Avion.html" target="_self">Avion</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="315"
+                                    class="link-to-prism">src/app/mapa/mapa.ts:315</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Genera el contenido HTML del popup
+asociado a una aeronave.</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                                <td>Description</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>a</td>
+                                            <td>
+                                                            <code><a href="../interfaces/Avion.html" target="_self" >Avion</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <p>Información del avión.</p>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                <p>Contenido HTML del popup.</p>
+
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="crearPopupClima"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>crearPopupClima</b></span>
+                        <a href="#crearPopupClima"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>crearPopupClima(c: <a href="../interfaces/Clima.html" target="_self">Clima</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="414"
+                                    class="link-to-prism">src/app/mapa/mapa.ts:414</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Genera el contenido HTML del popup
+asociado a un reporte meteorológico.</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                                <td>Description</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>c</td>
+                                            <td>
+                                                            <code><a href="../interfaces/Clima.html" target="_self" >Clima</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <p>Reporte meteorológico.</p>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                <p>Contenido HTML del popup.</p>
+
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="iniciarLoopAnimacion"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>iniciarLoopAnimacion</b></span>
+                        <a href="#iniciarLoopAnimacion"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>iniciarLoopAnimacion()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="168"
+                                    class="link-to-prism">src/app/mapa/mapa.ts:168</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Inicia el ciclo de animación encargado de
+actualizar suavemente la posición de los aviones.</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="iniciarTracking"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>iniciarTracking</b></span>
+                        <a href="#iniciarTracking"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>iniciarTracking()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="152"
+                                    class="link-to-prism">src/app/mapa/mapa.ts:152</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Inicia la actualización periódica de los vuelos
+mostrados en el mapa.</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="initMap"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>initMap</b></span>
+                        <a href="#initMap"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>initMap()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="122"
+                                    class="link-to-prism">src/app/mapa/mapa.ts:122</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Configura e inicializa el mapa de Leaflet.</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="mostrarMarcadoresClima"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>mostrarMarcadoresClima</b></span>
+                        <a href="#mostrarMarcadoresClima"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>mostrarMarcadoresClima(climas: <a href="../interfaces/Clima.html" target="_self">Clima[]</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="348"
+                                    class="link-to-prism">src/app/mapa/mapa.ts:348</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Crea los marcadores meteorológicos sobre el mapa.</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                                <td>Description</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>climas</td>
+                                            <td>
+                                                            <code><a href="../interfaces/Clima.html" target="_self" >Clima[]</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <p>Reportes meteorológicos obtenidos.</p>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngAfterViewInit"></a>
+                    <span class="name">
+                        <span ><b>ngAfterViewInit</b></span>
+                        <a href="#ngAfterViewInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngAfterViewInit()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="112"
+                                    class="link-to-prism">src/app/mapa/mapa.ts:112</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Inicializa el mapa, el seguimiento de vuelos,
+la animación y la carga de información meteorológica.</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnDestroy"></a>
+                    <span class="name">
+                        <span ><b>ngOnDestroy</b></span>
+                        <a href="#ngOnDestroy"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnDestroy()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="440"
+                                    class="link-to-prism">src/app/mapa/mapa.ts:440</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Libera recursos, elimina marcadores y
+cancela suscripciones al destruir el componente.</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="obtenerEmojiClima"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>obtenerEmojiClima</b></span>
+                        <a href="#obtenerEmojiClima"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>obtenerEmojiClima(clima: <a href="../interfaces/Clima.html" target="_self">Clima</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="397"
+                                    class="link-to-prism">src/app/mapa/mapa.ts:397</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Determina el emoji representativo
+de las condiciones de nubosidad.</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                                <td>Description</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>clima</td>
+                                            <td>
+                                                            <code><a href="../interfaces/Clima.html" target="_self" >Clima</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <p>Información meteorológica.</p>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                <p>Emoji descriptivo.</p>
+
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section data-compodoc="block-properties">
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="avionService"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>avionService</b></span>
+                        <a href="#avionService"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>unknown</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>inject(AvionService)</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="31" class="link-to-prism">src/app/mapa/mapa.ts:31</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Servicio para obtener información de vuelos.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="climaService"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>climaService</b></span>
+                        <a href="#climaService"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>unknown</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>inject(ClimaService)</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="34" class="link-to-prism">src/app/mapa/mapa.ts:34</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Servicio para obtener reportes meteorológicos.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="COORDENADAS_AEROPUERTOS"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                            <span class="modifier">Readonly</span>
+                        <span ><b>COORDENADAS_AEROPUERTOS</b></span>
+                        <a href="#COORDENADAS_AEROPUERTOS"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>Record&lt;string | unknown&gt;</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>{
+    SKBO: [4.702, -74.147],
+    SKRG: [6.164, -75.428],
+    SKCL: [3.543, -76.382],
+    SKCG: [10.442, -75.513],
+    SKBQ: [10.889, -74.781],
+    SKSP: [13.356, -81.711],
+    SBGR: [-23.435, -46.473],
+    SBGL: [-22.809, -43.244],
+    SBBR: [-15.871, -47.918],
+    SBSA: [-2.585, -44.235],
+    SBFZ: [-3.776, -38.532],
+    SBRF: [-8.126, -34.924],
+    SAEZ: [-34.822, -58.535],
+    SABE: [-34.559, -58.416],
+    SACO: [-31.323, -64.208],
+    SAME: [-32.831, -68.793],
+    SCEL: [-33.393, -70.786],
+    SCTE: [-38.766, -72.637],
+    SCFA: [-23.444, -70.445],
+    SPJC: [-12.022, -77.114],
+    SPZO: [-13.535, -71.939],
+    SPQU: [-16.341, -71.583],
+    SEQM: [-0.129, -78.358],
+    SEGU: [-2.158, -79.884],
+    SVMI: [10.601, -66.991],
+    SVMC: [10.558, -71.728],
+    SLVR: [-17.644, -63.135],
+    SLLP: [-16.513, -68.192],
+    SUMU: [-34.838, -56.03],
+    SGAS: [-25.24, -57.519],
+    SYCJ: [6.498, -58.254],
+    SMJP: [5.453, -55.188],
+  }</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="64" class="link-to-prism">src/app/mapa/mapa.ts:64</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Coordenadas geográficas de aeropuertos utilizados para mostrar información meteorológica.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="datosAviones"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>datosAviones</b></span>
+                        <a href="#datosAviones"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>unknown</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>new Map&lt;
+    string,
+    {
+      lat: number;
+      lng: number;
+      velocidad: number;
+      direccion: number;
+      altitud: number;
+    }
+  &gt;()</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="46" class="link-to-prism">src/app/mapa/mapa.ts:46</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Datos dinámicos utilizados para animarla posición de los aviones.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="FACTOR_VELOCIDAD"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                            <span class="modifier">Readonly</span>
+                        <span ><b>FACTOR_VELOCIDAD</b></span>
+                        <a href="#FACTOR_VELOCIDAD"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>0.6</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="106" class="link-to-prism">src/app/mapa/mapa.ts:106</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Factor utilizado para suavizar el movimiento de los aviones.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="FPS"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                            <span class="modifier">Readonly</span>
+                        <span ><b>FPS</b></span>
+                        <a href="#FPS"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>30</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="103" class="link-to-prism">src/app/mapa/mapa.ts:103</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Fotogramas por segundo utilizados en la animación.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="INTERVALO_MS"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                            <span class="modifier">Readonly</span>
+                        <span ><b>INTERVALO_MS</b></span>
+                        <a href="#INTERVALO_MS"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>unknown</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>5 * 60 * 1000</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="100" class="link-to-prism">src/app/mapa/mapa.ts:100</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Intervalo de actualización de vuelos en milisegundos.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="intervaloAnimacion"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                            <span class="modifier">Optional</span>
+                        <span ><b>intervaloAnimacion</b></span>
+                        <a href="#intervaloAnimacion"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="58" class="link-to-prism">src/app/mapa/mapa.ts:58</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Identificador del intervalo utilizado para la animación.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="map"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>map</b></span>
+                        <a href="#map"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>LeafletMap</code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="40" class="link-to-prism">src/app/mapa/mapa.ts:40</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Referencia al mapa de Leaflet.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="marcadores"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>marcadores</b></span>
+                        <a href="#marcadores"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>unknown</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>new Map&lt;string, LeafletMarker&gt;()</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="43" class="link-to-prism">src/app/mapa/mapa.ts:43</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Marcadores de aviones activos en el mapa.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="marcadoresClima"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>marcadoresClima</b></span>
+                        <a href="#marcadoresClima"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>unknown</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>new Map&lt;string, LeafletMarker&gt;()</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="37" class="link-to-prism">src/app/mapa/mapa.ts:37</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Marcadores asociados a reportes meteorológicos.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="suscripcion"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>suscripcion</b></span>
+                        <a href="#suscripcion"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>Subscription</code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="61" class="link-to-prism">src/app/mapa/mapa.ts:61</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Suscripción encargada de actualizar la información de vuelos.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="toast"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>toast</b></span>
+                        <a href="#toast"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>unknown</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>inject(ToastService)</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="28" class="link-to-prism">src/app/mapa/mapa.ts:28</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Servicio para mostrar notificaciones al usuario.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+</section>
+
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, AfterViewInit, OnDestroy, inject } from &#x27;@angular/core&#x27;;
+import { map as leafletMap, tileLayer, marker, latLng, divIcon, DivIcon } from &#x27;leaflet&#x27;;
+import type { Map as LeafletMap, Marker as LeafletMarker } from &#x27;leaflet&#x27;;
+import { interval, Subscription } from &#x27;rxjs&#x27;;
+import { switchMap, startWith } from &#x27;rxjs/operators&#x27;;
+import { Avion } from &#x27;../models/avion&#x27;;
+import { AvionService } from &#x27;../services/avion-service&#x27;;
+import { ToastService } from &#x27;../services/toast-service&#x27;;
+import { ClimaService } from &#x27;../services/clima-service&#x27;;
+import { Clima } from &#x27;../models/clima&#x27;;
+
+/**
+ * Componente encargado de visualizar en un mapa interactivo
+ * la posición de los aviones en tiempo real y los reportes
+ * meteorológicos asociados a distintos aeropuertos.
+ * @author Juan Martinez
+ * @version 1.0
+ */
+@Component({
+  selector: &#x27;app-mapa&#x27;,
+  templateUrl: &#x27;./mapa.html&#x27;,
+  styleUrls: [&#x27;./mapa.css&#x27;],
+  standalone: false,
+})
+export class Mapa implements AfterViewInit, OnDestroy {
+
+  /** Servicio para mostrar notificaciones al usuario. */
+  private toast &#x3D; inject(ToastService);
+
+  /** Servicio para obtener información de vuelos. */
+  private avionService &#x3D; inject(AvionService);
+
+  /** Servicio para obtener reportes meteorológicos. */
+  private climaService &#x3D; inject(ClimaService);
+
+  /** Marcadores asociados a reportes meteorológicos. */
+  private marcadoresClima &#x3D; new Map&lt;string, LeafletMarker&gt;();
+
+  /** Referencia al mapa de Leaflet. */
+  private map!: LeafletMap;
+
+  /** Marcadores de aviones activos en el mapa. */
+  private marcadores &#x3D; new Map&lt;string, LeafletMarker&gt;();
+
+  /** Datos dinámicos utilizados para animarla posición de los aviones. */
+  private datosAviones &#x3D; new Map&lt;
+    string,
+    {
+      lat: number;
+      lng: number;
+      velocidad: number;
+      direccion: number;
+      altitud: number;
+    }
+  &gt;();
+
+  /** Identificador del intervalo utilizado para la animación. */
+  private intervaloAnimacion?: number;
+
+  /** Suscripción encargada de actualizar la información de vuelos. */
+  private suscripcion!: Subscription;
+
+  /** Coordenadas geográficas de aeropuertos utilizados para mostrar información meteorológica. */
+  private readonly COORDENADAS_AEROPUERTOS: Record&lt;string, [number, number]&gt; &#x3D; {
+    SKBO: [4.702, -74.147],
+    SKRG: [6.164, -75.428],
+    SKCL: [3.543, -76.382],
+    SKCG: [10.442, -75.513],
+    SKBQ: [10.889, -74.781],
+    SKSP: [13.356, -81.711],
+    SBGR: [-23.435, -46.473],
+    SBGL: [-22.809, -43.244],
+    SBBR: [-15.871, -47.918],
+    SBSA: [-2.585, -44.235],
+    SBFZ: [-3.776, -38.532],
+    SBRF: [-8.126, -34.924],
+    SAEZ: [-34.822, -58.535],
+    SABE: [-34.559, -58.416],
+    SACO: [-31.323, -64.208],
+    SAME: [-32.831, -68.793],
+    SCEL: [-33.393, -70.786],
+    SCTE: [-38.766, -72.637],
+    SCFA: [-23.444, -70.445],
+    SPJC: [-12.022, -77.114],
+    SPZO: [-13.535, -71.939],
+    SPQU: [-16.341, -71.583],
+    SEQM: [-0.129, -78.358],
+    SEGU: [-2.158, -79.884],
+    SVMI: [10.601, -66.991],
+    SVMC: [10.558, -71.728],
+    SLVR: [-17.644, -63.135],
+    SLLP: [-16.513, -68.192],
+    SUMU: [-34.838, -56.03],
+    SGAS: [-25.24, -57.519],
+    SYCJ: [6.498, -58.254],
+    SMJP: [5.453, -55.188],
+  };
+
+  /** Intervalo de actualización de vuelos en milisegundos. */
+  private readonly INTERVALO_MS &#x3D; 5 * 60 * 1000;
+
+  /** Fotogramas por segundo utilizados en la animación. */
+  private readonly FPS &#x3D; 30;
+
+  /** Factor utilizado para suavizar el movimiento de los aviones. */
+  private readonly FACTOR_VELOCIDAD &#x3D; 0.6;
+
+  /**
+   * Inicializa el mapa, el seguimiento de vuelos,
+   * la animación y la carga de información meteorológica.
+   */
+  ngAfterViewInit(): void {
+    this.initMap();
+    this.iniciarTracking();
+    this.iniciarLoopAnimacion();
+    this.cargarClima();
+  }
+
+  /**
+   * Configura e inicializa el mapa de Leaflet.
+   */
+  private initMap(): void {
+    this.map &#x3D; leafletMap(&#x27;map&#x27;, {
+      center: [-14.235, -51.925],
+      zoom: 4,
+      minZoom: 4,
+      maxZoom: 18,
+      maxBounds: [
+        [-90, -180],
+        [90, 180],
+      ],
+      maxBoundsViscosity: 1.0,
+      scrollWheelZoom: false,
+      zoomControl: false,
+    });
+
+    this.map.on(&#x27;focus&#x27;, () &#x3D;&gt; this.map.scrollWheelZoom.enable());
+    this.map.on(&#x27;blur&#x27;, () &#x3D;&gt; this.map.scrollWheelZoom.disable());
+
+    tileLayer(&#x27;https://tiles.stadiamaps.com/tiles/alidade_smooth/{z}/{x}/{y}{r}.png&#x27;, {
+      maxZoom: 19,
+      attribution:
+        &#x27;&amp;copy; &lt;a href&#x3D;&quot;https://stadiamaps.com/&quot;&gt;Stadia Maps&lt;/a&gt;, &amp;copy; &lt;a href&#x3D;&quot;https://openmaptiles.org/&quot;&gt;OpenMapTiles&lt;/a&gt; &amp;copy; &lt;a href&#x3D;&quot;http://openstreetmap.org/copyright&quot;&gt;OpenStreetMap&lt;/a&gt; contributors&#x27;,
+      noWrap: true,
+    }).addTo(this.map);
+  }
+
+  /**
+   * Inicia la actualización periódica de los vuelos
+   * mostrados en el mapa.
+   */
+  private iniciarTracking(): void {
+    this.suscripcion &#x3D; interval(this.INTERVALO_MS)
+      .pipe(
+        startWith(0),
+        switchMap(() &#x3D;&gt; this.avionService.obtenerTodos()),
+      )
+      .subscribe({
+        next: (aviones) &#x3D;&gt; this.actualizarAviones(aviones),
+        error: () &#x3D;&gt; this.toast.mostrar(&#x27;Error al cargar los aviones&#x27;, false),
+      });
+  }
+
+  /**
+   * Inicia el ciclo de animación encargado de
+   * actualizar suavemente la posición de los aviones.
+   */
+  private iniciarLoopAnimacion(): void {
+    const intervaloFrame &#x3D; 1000 / this.FPS;
+
+    this.intervaloAnimacion &#x3D; window.setInterval(() &#x3D;&gt; {
+      this.datosAviones.forEach((datos, icao) &#x3D;&gt; {
+        const markerRef &#x3D; this.marcadores.get(icao);
+        if (!markerRef) return;
+
+        const nuevaPos &#x3D; this.calcularPosicionFutura(
+          datos.lat,
+          datos.lng,
+          datos.velocidad,
+          datos.direccion,
+          intervaloFrame / 1000,
+        );
+
+        datos.lat &#x3D; nuevaPos.lat;
+        datos.lng &#x3D; nuevaPos.lng;
+
+        markerRef.setLatLng([datos.lat, datos.lng]);
+      });
+    }, intervaloFrame);
+  }
+
+  /**
+   * Calcula una posición futura a partir de la ubicación,
+   * velocidad y rumbo actuales de una aeronave.
+   *
+   * @param lat Latitud actual.
+   * @param lng Longitud actual.
+   * @param velocidadKnots Velocidad en nudos.
+   * @param direccionGrados Rumbo en grados.
+   * @param segundos Tiempo transcurrido.
+   * @returns Nueva posición calculada.
+   */
+  private calcularPosicionFutura(
+    lat: number,
+    lng: number,
+    velocidadKnots: number,
+    direccionGrados: number,
+    segundos: number,
+  ): { lat: number; lng: number } {
+    const velocidadReal &#x3D; velocidadKnots * this.FACTOR_VELOCIDAD;
+    const velocidadKmS &#x3D; velocidadReal * 0.00514444;
+    const distanciaKm &#x3D; velocidadKmS * segundos;
+    const rad &#x3D; (direccionGrados * Math.PI) / 180;
+
+    const deltaNorteKm &#x3D; distanciaKm * Math.cos(rad);
+    const deltaEsteKm &#x3D; distanciaKm * Math.sin(rad);
+
+    const deltaLat &#x3D; deltaNorteKm / 111;
+    const deltaLng &#x3D; deltaEsteKm / (111 * Math.cos((lat * Math.PI) / 180));
+
+    return {
+      lat: lat + deltaLat,
+      lng: lng + deltaLng,
+    };
+  }
+
+  /**
+   * Actualiza los marcadores de los aviones
+   * visibles en el mapa.
+   *
+   * @param aviones Lista de aeronaves obtenidas desde el servicio.
+   */
+  private actualizarAviones(aviones: Avion[]): void {
+    const icaosActivos &#x3D; new Set(
+      aviones.filter((a) &#x3D;&gt; a.flight?.icaoNumber).map((a) &#x3D;&gt; a.flight.icaoNumber),
+    );
+
+    this.marcadores.forEach((markerRef, icao) &#x3D;&gt; {
+      if (!icaosActivos.has(icao)) {
+        this.map.removeLayer(markerRef);
+        this.marcadores.delete(icao);
+        this.datosAviones.delete(icao);
+      }
+    });
+
+    aviones.forEach((avion) &#x3D;&gt; {
+      const geo &#x3D; avion.geography;
+      if (!geo?.latitude || !geo?.longitude) return;
+
+      const id &#x3D; avion.flight?.icaoNumber;
+      if (!id) return;
+
+      const latlng &#x3D; latLng(geo.latitude, geo.longitude);
+      const icono &#x3D; this.crearIconoAvion(geo.direction ?? 0);
+      const popup &#x3D; this.crearPopup(avion);
+
+      if (this.marcadores.has(id)) {
+        const datos &#x3D; this.datosAviones.get(id);
+        if (!datos) return;
+
+        datos.lat &#x3D; geo.latitude;
+        datos.lng &#x3D; geo.longitude;
+        datos.velocidad &#x3D; avion.speed?.horizontal ?? 0;
+        datos.direccion &#x3D; geo.direction ?? 0;
+        datos.altitud &#x3D; geo.altitude ?? 0;
+
+        const markerRef &#x3D; this.marcadores.get(id);
+        markerRef?.setLatLng(latlng);
+        markerRef?.setIcon(icono);
+        markerRef?.setPopupContent(popup);
+      } else {
+        this.datosAviones.set(id, {
+          lat: geo.latitude,
+          lng: geo.longitude,
+          velocidad: avion.speed?.horizontal ?? 0,
+          direccion: geo.direction ?? 0,
+          altitud: geo.altitude ?? 0,
+        });
+
+        const newMarker &#x3D; marker(latlng, { icon: icono }).addTo(this.map).bindPopup(popup);
+        this.marcadores.set(id, newMarker);
+      }
+    });
+  }
+
+  /**
+   * Genera el icono utilizado para representar
+   * una aeronave en el mapa.
+   *
+   * @param heading Dirección de la aeronave.
+   * @returns Icono configurado.
+   */
+  private crearIconoAvion(heading: number): DivIcon {
+    return divIcon({
+      className: &#x27;&#x27;,
+      html: &#x60;&lt;img src&#x3D;&quot;/assets/avion.png&quot; style&#x3D;&quot;
+      transform: rotate(${heading}deg);
+      width: 22px;
+      height: 22px;
+      filter: drop-shadow(1px 1px 2px rgba(0,0,0,0.6));
+    &quot;&gt;&#x60;,
+      iconSize: [28, 28],
+      iconAnchor: [14, 14],
+      popupAnchor: [0, -16],
+    });
+  }
+
+  /**
+   * Genera el contenido HTML del popup
+   * asociado a una aeronave.
+   *
+   * @param a Información del avión.
+   * @returns Contenido HTML del popup.
+   */
+  private crearPopup(a: Avion): string {
+    const datos &#x3D; this.datosAviones.get(a.flight?.icaoNumber || &#x27;&#x27;);
+    return &#x60;
+      &lt;div style&#x3D;&quot;font-family: sans-serif; font-size: 13px; min-width: 180px;&quot;&gt;
+        &lt;b style&#x3D;&quot;font-size:15px;&quot;&gt;✈ ${a.airline?.name ?? &#x27;N/A&#x27;} ${a.flight?.iataNumber ?? &#x27;&#x27;}&lt;/b&gt;
+        &lt;hr style&#x3D;&quot;margin: 4px 0&quot;/&gt;
+        Origen: &lt;b&gt;${a.departure?.iataCode ?? &#x27;N/A&#x27;}&lt;/b&gt;&lt;br&gt;
+        Destino: &lt;b&gt;${a.arrival?.iataCode ?? &#x27;N/A&#x27;}&lt;/b&gt;&lt;br&gt;
+        &lt;hr style&#x3D;&quot;margin: 4px 0&quot;/&gt;
+        Lat: ${datos?.lat.toFixed(4) ?? &#x27;N/A&#x27;}, Lng: ${datos?.lng.toFixed(4) ?? &#x27;N/A&#x27;}&lt;br&gt;
+        Altitud: ${a.geography?.altitude ?? &#x27;N/A&#x27;} ft&lt;br&gt;
+        Velocidad: ${a.speed?.horizontal ?? &#x27;N/A&#x27;} kt&lt;br&gt;
+        Heading: ${a.geography?.direction ?? &#x27;N/A&#x27;}°&lt;br&gt;
+        Estado: &lt;b&gt;${a.status ?? &#x27;N/A&#x27;}&lt;/b&gt;
+      &lt;/div&gt;
+    &#x60;;
+  }
+
+  /**
+   * Obtiene y muestra los reportes meteorológicos.
+   */
+  private cargarClima(): void {
+    this.climaService.obtenerReportesClima().subscribe({
+      next: (climas) &#x3D;&gt; this.mostrarMarcadoresClima(climas),
+      error: () &#x3D;&gt; this.toast.mostrar(&#x27;Error al cargar el clima&#x27;, false),
+    });
+  }
+
+  /**
+   * Crea los marcadores meteorológicos sobre el mapa.
+   *
+   * @param climas Reportes meteorológicos obtenidos.
+   */
+  private mostrarMarcadoresClima(climas: Clima[]): void {
+    this.marcadoresClima.forEach((m) &#x3D;&gt; this.map.removeLayer(m));
+    this.marcadoresClima.clear();
+
+    climas.forEach((clima) &#x3D;&gt; {
+      const coords &#x3D; this.COORDENADAS_AEROPUERTOS[clima.icaoId];
+      if (!coords) return;
+
+      const icono &#x3D; this.crearIconoClima(clima);
+      const popup &#x3D; this.crearPopupClima(clima);
+
+      const m &#x3D; marker(latLng(coords[0], coords[1]), { icon: icono })
+        .addTo(this.map)
+        .bindPopup(popup);
+
+      this.marcadoresClima.set(clima.icaoId, m);
+    });
+  }
+
+  /**
+   * Genera el icono correspondiente a las condiciones
+   * meteorológicas reportadas.
+   *
+   * @param clima Información meteorológica.
+   * @returns Icono configurado.
+   */
+  private crearIconoClima(clima: Clima): DivIcon {
+    const emoji &#x3D; this.obtenerEmojiClima(clima);
+    return divIcon({
+      className: &#x27;&#x27;,
+      html: &#x60;&lt;div style&#x3D;&quot;
+      font-size: 20px;
+      line-height: 1;
+      filter: drop-shadow(1px 1px 2px rgba(0,0,0,0.5));
+      cursor: pointer;
+    &quot;&gt;${emoji}&lt;/div&gt;&#x60;,
+      iconSize: [24, 24],
+      iconAnchor: [12, 12],
+      popupAnchor: [0, -14],
+    });
+  }
+
+  /**
+   * Determina el emoji representativo
+   * de las condiciones de nubosidad.
+   *
+   * @param clima Información meteorológica.
+   * @returns Emoji descriptivo.
+   */
+  private obtenerEmojiClima(clima: Clima): string {
+    const cover &#x3D; clima.clouds?.[0]?.cover ?? &#x27;CLR&#x27;;
+    if (cover &#x3D;&#x3D;&#x3D; &#x27;CLR&#x27; || cover &#x3D;&#x3D;&#x3D; &#x27;SKC&#x27;) return &#x27;☀️&#x27;;
+    if (cover &#x3D;&#x3D;&#x3D; &#x27;FEW&#x27;) return &#x27;🌤️&#x27;;
+    if (cover &#x3D;&#x3D;&#x3D; &#x27;SCT&#x27;) return &#x27;⛅&#x27;;
+    if (cover &#x3D;&#x3D;&#x3D; &#x27;BKN&#x27;) return &#x27;🌥️&#x27;;
+    if (cover &#x3D;&#x3D;&#x3D; &#x27;OVC&#x27;) return &#x27;☁️&#x27;;
+    return &#x27;🌡️&#x27;;
+  }
+
+  /**
+   * Genera el contenido HTML del popup
+   * asociado a un reporte meteorológico.
+   *
+   * @param c Reporte meteorológico.
+   * @returns Contenido HTML del popup.
+   */
+  private crearPopupClima(c: Clima): string {
+    const nubes &#x3D; c.clouds?.length
+      ? c.clouds.map((n) &#x3D;&gt; &#x60;${n.cover} a ${n.base} ft&#x60;).join(&#x27;, &#x27;)
+      : &#x27;Sin datos&#x27;;
+
+    return &#x60;
+    &lt;div style&#x3D;&quot;font-family: sans-serif; font-size: 13px; min-width: 190px;&quot;&gt;
+      &lt;b style&#x3D;&quot;font-size:15px;&quot;&gt;${c.icaoId}&lt;/b&gt;
+      &lt;hr style&#x3D;&quot;margin: 4px 0&quot;/&gt;
+      Temperatura: &lt;b&gt;${c.temp}°C&lt;/b&gt;&lt;br&gt;
+      Punto de rocío: &lt;b&gt;${c.dewp}°C&lt;/b&gt;&lt;br&gt;
+      &lt;hr style&#x3D;&quot;margin: 4px 0&quot;/&gt;
+      Viento: &lt;b&gt;${c.wspd} kt&lt;/b&gt; desde &lt;b&gt;${c.wdir}°&lt;/b&gt;&lt;br&gt;
+      Visibilidad: &lt;b&gt;${c.visib}&lt;/b&gt;&lt;br&gt;
+      Presión: &lt;b&gt;${c.altim} hPa&lt;/b&gt;&lt;br&gt;
+      Nubes: &lt;b&gt;${nubes}&lt;/b&gt;&lt;br&gt;
+      &lt;hr style&#x3D;&quot;margin: 4px 0&quot;/&gt;
+      Reporte: ${c.reportTime}
+    &lt;/div&gt;
+  &#x60;;
+  }
+
+  /**
+   * Libera recursos, elimina marcadores y
+   * cancela suscripciones al destruir el componente.
+   */
+  ngOnDestroy(): void {
+    if (this.suscripcion) this.suscripcion.unsubscribe();
+    if (this.intervaloAnimacion) clearInterval(this.intervaloAnimacion);
+
+    this.marcadores.forEach((markerRef) &#x3D;&gt; this.map.removeLayer(markerRef));
+    this.marcadores.clear();
+    this.datosAviones.clear();
+
+    this.marcadoresClima.forEach((m) &#x3D;&gt; this.map.removeLayer(m));
+    this.marcadoresClima.clear();
+    if (this.map) this.map.remove();
+  }
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;div id&#x3D;&quot;map&quot;&gt;&lt;/div&gt;
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="styleData">
+                <p class="comment">
+                    <code>./mapa.css</code>
+                </p>
+                <pre class="line-numbers"><code class="language-scss">#map {
+  width: 100%;
+  height: 100vh;
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis-network.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><div id="map"></div></div>'
+    var COMPONENTS = [{'name': 'App', 'selector': 'app-root'},{'name': 'AuditoriaComponent', 'selector': 'app-auditoria-component'},{'name': 'Busqueda', 'selector': 'app-busqueda'},{'name': 'HistorialComponent', 'selector': 'app-historial-component'},{'name': 'Login', 'selector': 'app-login'},{'name': 'Main', 'selector': 'app-main'},{'name': 'Mapa', 'selector': 'app-mapa'},{'name': 'Nav', 'selector': 'app-nav'},{'name': 'Perfil', 'selector': 'app-perfil'},{'name': 'Principal', 'selector': 'app-principal'},{'name': 'Registro', 'selector': 'app-registro'},{'name': 'UsuarioCrud', 'selector': 'app-usuario-crud'}];
+    var DIRECTIVES = [];
+    var ACTUAL_COMPONENT = {'name': 'Mapa'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'Mapa.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script>
+               $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               checkToggle(darkModeState);
+               if ($darkModeToggleSwitchers.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

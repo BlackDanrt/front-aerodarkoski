@@ -1,0 +1,26 @@
+<nav class="navbar">
+  <div class="logo">
+    <span class="env">Tracker Aéreo</span>
+    <span class="darkoski">AERODARKOSKI</span>
+  </div>
+
+  <!-- Botón hamburguesa para móvil -->
+  <button class="menu-toggle" (click)="toggleMenu()" [class.active]="menuAbierto" aria-label="Menú">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+
+  <!-- Menú con clase dinámica para mostrar/ocultar en móvil -->
+  <ul class="menu" [class.active]="menuAbierto">
+    <li *ngIf="!isAutenticado()"><a routerLink="/login" (click)="cerrarMenu()">Acceder</a></li>
+    <li *ngIf="!isAutenticado()"><a routerLink="/registro" (click)="cerrarMenu()">Registrarse</a></li>
+    <li *ngIf="!isAutenticado()"><a routerLink="/main" (click)="cerrarMenu()">Pagina Principal</a></li>
+    <li *ngIf="isAutenticado()"><a routerLink="/perfil" (click)="cerrarMenu()">Perfil</a></li>
+    <li *ngIf="isAdministrador()"><a routerLink="/usuarios" (click)="cerrarMenu()">Usuarios</a></li>
+    <li *ngIf="isAdministrador()"><a routerLink="/auditoria" (click)="cerrarMenu()">Auditoria</a></li>
+    <li *ngIf="isAutenticado()"><a routerLink="/principal" (click)="cerrarMenu()">Principal</a></li>
+    <li *ngIf="isAutenticado()"><a (click)="navegarAHistorial(); cerrarMenu()">Historial</a></li>
+    <li *ngIf="isAutenticado()"><a (click)="cerrarSesion(); cerrarMenu()">Cerrar Sesión</a></li>
+  </ul>
+</nav>

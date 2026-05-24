@@ -1,0 +1,58 @@
+:root {
+  --color-principal: #1E3A8A;
+  --color-secundario: #4DA6FF;
+  --color-terciario: #F8FAFC;
+  --color-fondo: #F1F5F9;
+  --color-cards: #FFFFFF;
+  --color-btn: #1E3A8A;
+  --color-texto: #333333;
+  --colot-btn-confirmar-editar: #D1D5DB;
+  --colot-btn-confirmar-eliminar: #FCA5A5;
+  --color-btn-crear: #10B981;
+  --color-btn-crear-hover: #059669;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  overflow: hidden;
+  background: linear-gradient(135deg, #F0F4F8 0%, #D9E2EC 100%) !important;
+  font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  scroll-behavior: smooth;
+}
+
+app-root {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  overflow-y: scroll;
+}
+
+router-outlet + * {
+  flex: 1;
+  overflow: hidden;
+  min-height: 0;
+}
+
+
+@media (max-width: 768px) {
+  html, body {
+    height: auto;
+    min-height: 100vh;
+    overflow-x: hidden;
+    overflow-y: auto;
+  }
+
+  app-root {
+    height: auto;
+    min-height: 100vh;
+    overflow: visible;
+  }
+
+  router-outlet + * {
+    flex: none;
+    overflow: visible;
+    min-height: auto;
+  }
+}

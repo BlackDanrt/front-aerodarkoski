@@ -1,0 +1,17 @@
+<app-nav></app-nav>
+<div class="contenido-con-navbar-fijo">
+  <div class="toast-container position-fixed top-0 start-50 translate-middle-x p-3" style="z-index: 9999;">
+    <div id="miToast" class="toast align-items-center border-0"
+         [ngClass]="toastExito ? 'text-bg-success' : 'text-bg-danger'"
+         role="alert">
+      <div class="d-flex">
+        <div class="toast-body fs-6 px-4 py-3">
+          <i class="bi" [ngClass]="toastExito ? 'bi-check-circle' : 'bi-exclamation-triangle'"></i>
+          {{ mensajeToast }}
+        </div>
+        <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"></button>
+      </div>
+    </div>
+  </div>
+  <router-outlet></router-outlet>
+</div>

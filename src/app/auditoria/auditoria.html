@@ -1,0 +1,84 @@
+<div class="auditorias-container">
+
+  <div class="auditorias-header">
+    <div class="header-content">
+      <div class="header-icon">
+        <i class="bi bi-people-fill"></i>
+      </div>
+      <div>
+        <h2>Auditoria del Sistema</h2>
+      </div>
+    </div>
+  </div>
+
+    <div *ngIf="mensajeExito" class="mensaje mensaje-exito">{{ mensajeExito }}</div>
+    <div *ngIf="mensajeError" class="mensaje mensaje-error">{{ mensajeError }}</div>
+
+
+      <div class="auditorias-toolbar">
+        <div class="search-box">
+          <i class="bi bi-search"></i>
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Buscar por Nombre de Usuario o Acción "
+            [value]="filtroTexto"
+            (input)="onFiltroChange($any($event).target.value)"
+            name="filtroTexto"
+          >
+        </div>
+        <span class="contador-badge">
+           <i class="bi bi-people me-1"></i>
+          {{ auditoriasFiltradasCache.length }} Registro{{ auditoriasFiltradasCache.length !== 1 ? 's' : '' }}
+        </span>
+      </div>
+
+      <div *ngIf="cargando" class="loading-container">
+        <div class="bi bi-exclamation-triangle-fill spinner-perfil"></div>
+        <p class="text-muted">Cargando registros de auditoría...</p>
+      </div>
+
+      <div *ngIf="!cargando" class="table-container">
+        <table class="table table-hover">
+          <thead>
+          <tr>
+            <th>ID</th>
+            <th>ID Usuario</th>
+            <th>Usuario</th>
+            <th>Acción</th>
+            <th>Rol</th>
+            <th>Servicio</th>
+            <th>Fecha</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let auditoria of auditoriasFiltradasCache; trackBy: trackByAuditoria">
+            <td class="id-cell" data-label="ID">#{{ auditoria.id }}</td>
+            <td data-label="ID Usuario">{{ auditoria.idUsuario ?? 'N/A' }}</td>
+            <td class="cell-bold" data-label="Nombre Usuario">{{ auditoria.nombreUsuario || 'Sistema' }}</td>
+            <td data-label="Acción">
+                <span class="badge-accion" [class]="'accion-' + (auditoria.accion | lowercase)">
+                  {{ auditoria.accion }}
+                </span>
+            </td>
+            <td data-label="Rol">
+                <span class="badge-rol" [class]="'rol-' + (auditoria.rolUsuario | lowercase)">
+                  {{ auditoria.rolUsuario }}
+                </span>
+            </td>
+            <td data-label="Servicio">
+              <span class="badge-servicio" [class]="'servicio-' + (auditoria.servicioUsado | lowercase)">
+                {{ auditoria.servicioUsado }}
+              </span>
+            </td>
+            <td data-label="Fecha">{{ auditoria.fecha | date:'dd/MM/yyyy HH:mm' }}</td>
+          </tr>
+          <tr *ngIf="auditoriasFiltradasCache.length === 0">
+            <td colspan="7" class="sin-datos">No se encontraron registros</td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+

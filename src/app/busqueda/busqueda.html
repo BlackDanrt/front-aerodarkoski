@@ -1,0 +1,89 @@
+<div class="auditorias-container">
+
+  <div class="auditorias-header">
+    <div class="header-content">
+      <div class="header-icon">
+        <i class="bi bi-airplane-fill"></i>
+      </div>
+      <div>
+        <h2>Aviones</h2>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="cargando" class="loading-container">
+    <div class="spinner-perfil"></div>
+    <p>Cargando aviones...</p>
+  </div>
+
+  <div *ngIf="mensajeError" class="mensaje mensaje-error">{{ mensajeError }}</div>
+
+  <div *ngIf="cargaExitosa" class="contenedor-aviones">
+
+    <div class="aviones" *ngFor="let avion of aviones">
+
+      <div class="flight-hero">
+        <div class="flight-id">
+          <i class="bi bi-airplane-engines flight-icon"></i>
+          <div>
+            <div class="flight-number">
+              {{ avion.flight.iataNumber }} · {{ avion.flight.icaoNumber }}
+            </div>
+            <div class="flight-airline">
+              {{ avion.airline.name }} · {{ avion.aircraft.regNumber }}
+            </div>
+          </div>
+        </div>
+        <span class="badge-status" [class]="'status-' + avion.status">
+          {{ avion.status }}
+        </span>
+      </div>
+
+      <div class="route-section celda">
+        <div class="route-airport">
+          <div class="airport-code">{{ avion.departure.iataCode }}</div>
+          <div class="airport-icao">{{ avion.departure.icaoCode }}</div>
+          <div class="route-label">Salida</div>
+        </div>
+        <i class="bi bi-airplane"></i>
+        <div class="route-airport arrival">
+          <div class="airport-code">{{ avion.arrival.iataCode }}</div>
+          <div class="airport-icao">{{ avion.arrival.icaoCode }}</div>
+          <div class="route-label">Llegada</div>
+        </div>
+      </div>
+
+      <div class="data-grid celda">
+        <div class="data-cell">
+          <div class="data-label">Altitud</div>
+          <div class="data-value">{{ avion.geography.altitude | number }} ft</div>
+        </div>
+        <div class="data-cell">
+          <div class="data-label">Velocidad</div>
+          <div class="data-value">{{ avion.speed.horizontal | number }} km/h</div>
+        </div>
+        <div class="data-cell">
+          <div class="data-label">Rumbo</div>
+          <div class="data-value">{{ avion.geography.direction }}°</div>
+        </div>
+      </div>
+
+      <div class="tech-section celda">
+        <div class="tech-item">
+          <span class="tech-label">ICAO 24</span>
+          <span class="tech-value">{{ avion.aircraft.icao24 }}</span>
+        </div>
+        <div class="tech-item">
+          <span class="tech-label">ICAO aeronave</span>
+          <span class="tech-value">{{ avion.aircraft.icaoCode }}</span>
+        </div>
+        <div class="tech-item">
+          <span class="tech-label">Vuelo N°</span>
+          <span class="tech-value">{{ avion.flight.number }}</span>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</div>

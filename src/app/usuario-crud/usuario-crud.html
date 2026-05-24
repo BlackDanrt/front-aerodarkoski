@@ -1,0 +1,271 @@
+<div class="usuarios-container">
+
+  <div class="usuarios-header">
+    <div class="header-content">
+      <div class="header-icon">
+        <i class="bi bi-people-fill"></i>
+      </div>
+      <div>
+        <h2>Gestión de Usuarios</h2>
+        <p class="header-subtitle">Administra los usuarios del sistema</p>
+      </div>
+    </div>
+    <button class="btn btn-crear" (click)="abrirCrear()" type="button">
+      <i class="bi bi-plus-lg me-2"></i>Nuevo Usuario
+    </button>
+  </div>
+
+  <div *ngIf="mensajeExito" class="alert alert-success">
+    <i class="bi bi-check-circle-fill me-2"></i>{{ mensajeExito }}
+  </div>
+  <div *ngIf="mensajeError && !mostrarModal && !mostrarConfirmacion" class="alert alert-danger">
+    <i class="bi bi-exclamation-triangle-fill me-2"></i>{{ mensajeError }}
+  </div>
+
+  <div class="usuarios-toolbar">
+    <div class="search-box">
+      <i class="bi bi-search"></i>
+      <input
+        type="text"
+        class="form-control"
+        placeholder="Buscar por Nombre de Usuario o Rol"
+        [value]="filtroTexto"
+        (input)="onFiltroChange($any($event).target.value)"
+        name="filtroTexto"
+      >
+    </div>
+    <span class="contador-badge">
+      <i class="bi bi-people me-1"></i>
+      {{ usuariosFiltradosCache.length }} usuario{{ usuariosFiltradosCache.length !== 1 ? 's' : '' }}
+    </span>
+  </div>
+
+  <div *ngIf="cargando" class="loading-container">
+    <div class="spinner-usuarios"></div>
+    <p class="text-muted">Cargando usuarios...</p>
+  </div>
+
+  <div *ngIf="!cargando" class="table-container">
+    <table class="table table-hover">
+      <thead>
+      <tr>
+        <th>ID</th>
+        <th>Usuario</th>
+        <th>Correo</th>
+        <th>Rol</th>
+        <th class="text-end">Acciones</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let usuario of usuariosFiltradosCache; trackBy: buscarPorUsuario">
+        <td class="id-cell" data-label="ID">#{{ usuario.id }}</td>
+        <td>
+          <div class="usuario-info">
+            <div class="usuario-avatar">
+              <i class="bi bi-person-circle"></i>
+            </div>
+            <span class="usuario-nombre">{{ usuario.nombreUsuario }}</span>
+          </div>
+        </td>
+        <td>
+          <div class="usuario-info">
+            <span class="usuario-nombre">{{ usuario.correo }}</span>
+          </div>
+        </td>
+        <td>
+            <span class="rol-badge rol-usuario" >
+              <i class="bi bi-person-fill"></i>
+              {{ usuario.rol }}
+            </span>
+        </td>
+        <td class="text-end">
+          <button class="btn btn-action btn-editar me-2"
+                  (click)="abrirEditar(usuario)"
+                  type="button"
+                  title="Editar usuario">
+            <i class="bi bi-pencil-square me-1"></i>
+            <span class="btn-text">Editar</span>
+          </button>
+          <button class="btn btn-action btn-eliminar"
+                  (click)="confirmarEliminar(usuario)"
+                  type="button"
+                  title="Eliminar usuario">
+            <i class="bi bi-trash-fill me-1"></i>
+            <span class="btn-text">Eliminar</span>
+          </button>
+        </td>
+      </tr>
+      <tr *ngIf="usuariosFiltradosCache.length === 0">
+        <td colspan="4" class="text-center py-5 text-muted">
+          <i class="bi bi-inbox fs-1 d-block mb-2"></i>
+          No se encontraron usuarios
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div *ngIf="mostrarModal" class="modal-overlay" (click)="cerrarModal()">
+    <div class="modal-box" (click)="$event.stopPropagation()">
+
+      <div class="modal-header">
+        <div class="modal-icon">
+          <i class="bi" [class.bi-person-plus-fill]="!modoEdicion"
+             [class.bi-person-gear]="modoEdicion"></i>
+        </div>
+        <h4>{{ modoEdicion ? 'Editar Usuario' : 'Nuevo Usuario' }}</h4>
+      </div>
+
+      <div class="modal-body">
+        <div *ngIf="mensajeError && mostrarModal" class="alert alert-danger">
+          <i class="bi bi-exclamation-triangle-fill me-2"></i>{{ mensajeError }}
+        </div>
+
+        <form (ngSubmit)="guardar()" autocomplete="off">
+
+          <div class="form-floating mb-3">
+            <input
+              type="text"
+              class="form-control"
+              id="nombreUsuario"
+              [(ngModel)]="usuarioForm.nombreUsuario"
+              name="nombreUsuario"
+              required
+              placeholder="Nombre de usuario"
+              autocomplete="off"
+            >
+            <label for="nombreUsuario">
+              <i class="bi bi-person me-2"></i>Nombre de Usuario
+            </label>
+          </div>
+
+          <div class="form-floating mb-3">
+            <select
+              class="form-select"
+              id="rol"
+              [(ngModel)]="usuarioForm.rol"
+              name="rol"
+            >
+              <option *ngFor="let rol of roles" [value]="rol">{{ rol }}</option>
+            </select>
+            <label for="rol">
+              <i class="bi bi-shield me-2"></i>Rol
+            </label>
+          </div>
+
+
+          <div class="form-floating mb-3">
+            <input
+              type="email"
+              class="form-control"
+              id="email"
+              [(ngModel)]="usuarioForm.correo"
+              name="correo"
+              required
+              placeholder="Correo electrónico"
+              autocomplete="email"
+              [disabled]="modoEdicion"
+            >
+            <label for="email">
+              <i class="bi bi-envelope me-2"></i>
+              Correo Electrónico
+            </label>
+          </div>
+
+          <div class="form-floating mb-4" *ngIf="!modoEdicion">
+            <input
+              type="email"
+              class="form-control"
+              id="confirmarEmail"
+              [(ngModel)]="confirmarCorreo"
+              name="confirmarCorreo"
+              [required]="!modoEdicion"
+              placeholder="Confirmar correo electrónico"
+              autocomplete="email"
+            >
+            <label for="confirmarEmail">
+              <i class="bi bi-envelope-fill me-2"></i>Confirmar Correo
+              </label>
+          </div>
+
+          <div class="form-floating mb-3">
+            <input
+              type="password"
+              class="form-control"
+              id="contrasenia"
+              [(ngModel)]="usuarioForm.contrasenia"
+              name="contrasenia"
+              [required]="!modoEdicion"
+              placeholder="Contraseña"
+              minlength="6"
+              autocomplete="new-password"
+            >
+            <label for="contrasenia">
+              <i class="bi bi-lock me-2"></i>
+              {{ modoEdicion ? 'Nueva Contraseña (opcional)' : 'Contraseña' }}
+            </label>
+          </div>
+
+          <div class="form-floating mb-4">
+            <input
+              type="password"
+              class="form-control"
+              id="confirmarContrasenia"
+              [(ngModel)]="confirmarContrasenia"
+              name="confirmarContrasenia"
+              [required]="usuarioForm.contrasenia ? true : false"
+              placeholder="Confirmar contraseña"
+              autocomplete="new-password"
+            >
+            <label for="confirmarContrasenia">
+              <i class="bi bi-lock-fill me-2"></i>Confirmar Contraseña
+            </label>
+          </div>
+
+          <div class="modal-acciones">
+            <button type="submit" class="btn btn-guardar" [disabled]="guardando">
+              <i class="bi" [class.bi-check-lg]="!guardando"
+                 [class.bi-arrow-repeat]="guardando" [class.spin]="guardando"></i>
+              {{ guardando ? 'Guardando...' : (modoEdicion ? 'Actualizar' : 'Crear') }}
+            </button>
+            <button type="button" class="btn btn-cancelar" (click)="cerrarModal()" [disabled]="guardando">
+              <i class="bi bi-x-lg me-2"></i>Cancelar
+            </button>
+          </div>
+
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="mostrarConfirmacion" class="modal-overlay" (click)="cancelarEliminar()">
+    <div class="modal-box modal-confirmacion" (click)="$event.stopPropagation()">
+
+      <div class="confirmacion-icono">
+        <i class="bi bi-exclamation-triangle-fill"></i>
+      </div>
+
+      <h4>¿Eliminar usuario?</h4>
+      <p class="confirmacion-texto">
+        Estás a punto de eliminar a <strong>{{ usuarioAEliminar?.nombreUsuario }}</strong>.
+        <br>Esta acción no se puede deshacer.
+      </p>
+
+      <div *ngIf="mensajeError && mostrarConfirmacion" class="alert alert-danger mt-3">
+        <i class="bi bi-exclamation-triangle-fill me-2"></i>{{ mensajeError }}
+      </div>
+
+      <div class="modal-acciones">
+        <button class="btn btn-eliminar-confirmar" (click)="eliminar()" [disabled]="guardando" type="button">
+          <i class="bi" [class.bi-trash-fill]="!guardando"
+             [class.bi-arrow-repeat]="guardando" [class.spin]="guardando"></i>
+          {{ guardando ? 'Eliminando...' : 'Sí, Eliminar' }}
+        </button>
+        <button class="btn btn-cancelar" (click)="cancelarEliminar()" [disabled]="guardando" type="button">
+          <i class="bi bi-x-lg me-2"></i>Cancelar
+        </button>
+      </div>
+    </div>
+  </div>
+
+</div>

@@ -1,0 +1,1498 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>proyectofinal documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+          <script>
+               // Blocking script to avoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+          </script>
+          <script>
+              // --- Iframe navigation tracking for Template Playground ---
+              function sendCurrentUrlToParent() {
+                  if (window.parent && window.parent !== window) {
+                      window.parent.postMessage({
+                          type: 'compodoc-iframe-navigate',
+                          url: window.location.pathname + window.location.hash
+                      }, '*');
+                  }
+              }
+              window.addEventListener('hashchange', sendCurrentUrlToParent, false);
+              window.addEventListener('popstate', sendCurrentUrlToParent, false);
+              window.addEventListener('DOMContentLoaded', sendCurrentUrlToParent, false);
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-md-none p-0">
+               <div class="d-flex">
+                    <a href="../" class="navbar-brand">proyectofinal documentation</a>
+                    <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+               </div>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="d-none d-md-block menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+
+
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">Components</li>
+  <li class="breadcrumb-item"
+  >
+  Busqueda</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+            <a href="#info" class="nav-link active"
+                role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li class="nav-item">
+            <a href="#source" class="nav-link"
+                role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li class="nav-item">
+            <a href="#templateData" class="nav-link"
+                role="tab" id="templateData-tab" data-bs-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li class="nav-item">
+            <a href="#tree" class="nav-link"
+                role="tab" id="tree-tab" data-bs-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/busqueda/busqueda.ts</code>
+</p>
+
+
+    <p class="comment">
+        <h3>Description</h3>
+    </p>
+    <p class="comment">
+        <p>Componente encargado de realizar búsquedas de vuelos
+mediante códigos IATA o ICAO, tanto de aeropuertos
+como de vuelos, y mostrar los resultados encontrados.</p>
+
+    </p>
+
+
+
+
+<section data-compodoc="block-metadata">
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover metadata">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>app-busqueda</code></td>
+            </tr>
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./busqueda.html</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">styleUrl</td>
+                <td class="col-md-9"><code>./busqueda.css</code></td>
+            </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-index">
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#aviones" >aviones</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#avionService" >avionService</a>
+                            </li>
+                            <li>
+                                <a href="#cargaExitosa" >cargaExitosa</a>
+                            </li>
+                            <li>
+                                <a href="#cargando" >cargando</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#cdr" >cdr</a>
+                            </li>
+                            <li>
+                                <a href="#codigo" >codigo</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#historialService" >historialService</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#jwt" >jwt</a>
+                            </li>
+                            <li>
+                                <a href="#mensajeError" >mensajeError</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#route" >route</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#rutas" >rutas</a>
+                            </li>
+                            <li>
+                                <a href="#tipoBusqueda" >tipoBusqueda</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#toast" >toast</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#cargarAviones" >cargarAviones</a>
+                            </li>
+                            <li>
+                                <a href="#definirTipoBusqueda" >definirTipoBusqueda</a>
+                            </li>
+                            <li>
+                                <a href="#guardarHistorial" >guardarHistorial</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnInit" >ngOnInit</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+
+
+
+
+
+    <section data-compodoc="block-methods">
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="cargarAviones"></a>
+                    <span class="name">
+                        <span ><b>cargarAviones</b></span>
+                        <a href="#cargarAviones"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>cargarAviones(codigo: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, tipoBusqueda: <a href="../miscellaneous/enumerations.html#TipoBusqueda" target="_self">TipoBusqueda</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="110"
+                                    class="link-to-prism">src/app/busqueda/busqueda.ts:110</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Ejecuta la búsqueda de vuelos utilizando
+el servicio correspondiente al tipo indicado.</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                                <td>Description</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>codigo</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <p>Código de búsqueda.</p>
+
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                                <td>tipoBusqueda</td>
+                                            <td>
+                                                            <code><a href="../miscellaneous/enumerations.html#TipoBusqueda" target="_self" >TipoBusqueda</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <p>Tipo de búsqueda a ejecutar.</p>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="definirTipoBusqueda"></a>
+                    <span class="name">
+                        <span ><b>definirTipoBusqueda</b></span>
+                        <a href="#definirTipoBusqueda"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>definirTipoBusqueda(codigo: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, tipoBusqueda: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="93"
+                                    class="link-to-prism">src/app/busqueda/busqueda.ts:93</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Determina el tipo de búsqueda a realizar
+según el código recibido y el tipo seleccionado.</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                                <td>Description</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>codigo</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <p>Código de aeropuerto o vuelo.</p>
+
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                                <td>tipoBusqueda</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <p>Tipo de búsqueda indicado en la ruta.</p>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                <p>Tipo de búsqueda que debe ejecutarse.</p>
+
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="guardarHistorial"></a>
+                    <span class="name">
+                        <span ><b>guardarHistorial</b></span>
+                        <a href="#guardarHistorial"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>guardarHistorial(codigo: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, tipoBusqueda: <a href="../miscellaneous/enumerations.html#TipoBusqueda" target="_self">TipoBusqueda</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="138"
+                                    class="link-to-prism">src/app/busqueda/busqueda.ts:138</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Guarda la búsqueda realizada en el historial
+del usuario autenticado.</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                                <td>Description</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>codigo</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <p>Código buscado.</p>
+
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                                <td>tipoBusqueda</td>
+                                            <td>
+                                                            <code><a href="../miscellaneous/enumerations.html#TipoBusqueda" target="_self" >TipoBusqueda</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <p>Tipo de búsqueda realizada.</p>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnInit"></a>
+                    <span class="name">
+                        <span ><b>ngOnInit</b></span>
+                        <a href="#ngOnInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnInit()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="79"
+                                    class="link-to-prism">src/app/busqueda/busqueda.ts:79</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Inicializa el componente obteniendo los parámetros
+de la URL y ejecutando la búsqueda correspondiente.</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section data-compodoc="block-properties">
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="aviones"></a>
+                    <span class="name">
+                        <span ><b>aviones</b></span>
+                        <a href="#aviones"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/Avion.html" target="_self" >Avion[]</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="58" class="link-to-prism">src/app/busqueda/busqueda.ts:58</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Lista completa de auditorías</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="avionService"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>avionService</b></span>
+                        <a href="#avionService"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>unknown</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>inject(AvionService)</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="28" class="link-to-prism">src/app/busqueda/busqueda.ts:28</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Servicio para gestionar consultas de vuelos.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="cargaExitosa"></a>
+                    <span class="name">
+                        <span ><b>cargaExitosa</b></span>
+                        <a href="#cargaExitosa"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>unknown</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="67" class="link-to-prism">src/app/busqueda/busqueda.ts:67</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Indica si la carga de resultados fue exitosa.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="cargando"></a>
+                    <span class="name">
+                        <span ><b>cargando</b></span>
+                        <a href="#cargando"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>unknown</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>true</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="61" class="link-to-prism">src/app/busqueda/busqueda.ts:61</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Indica si los datos están cargando</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="cdr"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>cdr</b></span>
+                        <a href="#cdr"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>unknown</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>inject(ChangeDetectorRef)</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="44" class="link-to-prism">src/app/busqueda/busqueda.ts:44</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Servicio para forzar la detección de cambios</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="codigo"></a>
+                    <span class="name">
+                        <span ><b>codigo</b></span>
+                        <a href="#codigo"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;&#x27;</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="70" class="link-to-prism">src/app/busqueda/busqueda.ts:70</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Código utilizado para realizar la búsqueda.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="historialService"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>historialService</b></span>
+                        <a href="#historialService"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>unknown</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>inject(HistorialService)</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="37" class="link-to-prism">src/app/busqueda/busqueda.ts:37</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Servicio para gestionar el historial de búsquedas.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="jwt"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>jwt</b></span>
+                        <a href="#jwt"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>unknown</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>inject(JwtService)</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="40" class="link-to-prism">src/app/busqueda/busqueda.ts:40</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Servicio para obtener información del JWT.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="mensajeError"></a>
+                    <span class="name">
+                        <span ><b>mensajeError</b></span>
+                        <a href="#mensajeError"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;&#x27;</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="64" class="link-to-prism">src/app/busqueda/busqueda.ts:64</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Mensaje de error mostrado en pantalla</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="route"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>route</b></span>
+                        <a href="#route"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>unknown</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>inject(ActivatedRoute)</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="34" class="link-to-prism">src/app/busqueda/busqueda.ts:34</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Servicio para acceder a los parámetros de la ruta.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="rutas"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                            <span class="modifier">Readonly</span>
+                        <span ><b>rutas</b></span>
+                        <a href="#rutas"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/Avion.html" target="_self" >Record&lt;TipoBusqueda | Observable&lt;Avion[]&gt;&gt;</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>{
+    [TipoBusqueda.IATA]:        (codigo) &#x3D;&gt; this.avionService.buscarPorArrIata(codigo),
+    [TipoBusqueda.ICAO]:        (codigo) &#x3D;&gt; this.avionService.buscarPorArrIcao(codigo),
+    [TipoBusqueda.FLIGHT_IATA]: (codigo) &#x3D;&gt; this.avionService.buscarPorFlightIata(codigo),
+    [TipoBusqueda.FLIGHT_ICAO]: (codigo) &#x3D;&gt; this.avionService.buscarPorFlightIcao(codigo),
+  }</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="50" class="link-to-prism">src/app/busqueda/busqueda.ts:50</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Mapa de tipos de búsqueda y sus respectivos métodos
+de consulta en el servicio de aviones.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="tipoBusqueda"></a>
+                    <span class="name">
+                        <span ><b>tipoBusqueda</b></span>
+                        <a href="#tipoBusqueda"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>1</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="73" class="link-to-prism">src/app/busqueda/busqueda.ts:73</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Tipo de búsqueda seleccionado.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="toast"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>toast</b></span>
+                        <a href="#toast"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>unknown</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>inject(ToastService)</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="31" class="link-to-prism">src/app/busqueda/busqueda.ts:31</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Servicio para mostrar notificaciones.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+</section>
+
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import {ChangeDetectorRef, Component, inject} from &#x27;@angular/core&#x27;;
+import {AvionService} from &#x27;../services/avion-service&#x27;;
+import {Avion} from &#x27;../models/avion&#x27;;
+import {ToastService} from &#x27;../services/toast-service&#x27;;
+import {ActivatedRoute} from &#x27;@angular/router&#x27;;
+import {TipoBusqueda} from &#x27;../enums/tipo-busqueda&#x27;;
+import {finalize, Observable} from &#x27;rxjs&#x27;;
+import {HistorialService} from &#x27;../services/historial-service&#x27;;
+import {JwtService} from &#x27;../services/jwt-service&#x27;;
+import {Historial} from &#x27;../models/historial&#x27;;
+
+/**
+ * Componente encargado de realizar búsquedas de vuelos
+ * mediante códigos IATA o ICAO, tanto de aeropuertos
+ * como de vuelos, y mostrar los resultados encontrados.
+ * @author Juan Martinez
+ * @version 1.0
+ */
+@Component({
+  selector: &#x27;app-busqueda&#x27;,
+  standalone: false,
+  templateUrl: &#x27;./busqueda.html&#x27;,
+  styleUrl: &#x27;./busqueda.css&#x27;,
+})
+export class Busqueda {
+
+  /** Servicio para gestionar consultas de vuelos. */
+  private avionService &#x3D; inject(AvionService);
+
+  /** Servicio para mostrar notificaciones. */
+  private toast &#x3D; inject(ToastService);
+
+  /** Servicio para acceder a los parámetros de la ruta. */
+  private route &#x3D; inject(ActivatedRoute);
+
+  /** Servicio para gestionar el historial de búsquedas. */
+  private historialService &#x3D; inject(HistorialService);
+
+  /** Servicio para obtener información del JWT. */
+  private jwt &#x3D; inject(JwtService);
+
+
+  /** Servicio para forzar la detección de cambios */
+  private cdr &#x3D; inject(ChangeDetectorRef);
+
+  /**
+   * Mapa de tipos de búsqueda y sus respectivos métodos
+   * de consulta en el servicio de aviones.
+   */
+  private readonly rutas: Record&lt;TipoBusqueda, (codigo: string) &#x3D;&gt; Observable&lt;Avion[]&gt;&gt; &#x3D; {
+    [TipoBusqueda.IATA]:        (codigo) &#x3D;&gt; this.avionService.buscarPorArrIata(codigo),
+    [TipoBusqueda.ICAO]:        (codigo) &#x3D;&gt; this.avionService.buscarPorArrIcao(codigo),
+    [TipoBusqueda.FLIGHT_IATA]: (codigo) &#x3D;&gt; this.avionService.buscarPorFlightIata(codigo),
+    [TipoBusqueda.FLIGHT_ICAO]: (codigo) &#x3D;&gt; this.avionService.buscarPorFlightIcao(codigo),
+  };
+
+  /** Lista completa de auditorías */
+  aviones: Avion[] &#x3D; [];
+
+  /** Indica si los datos están cargando */
+  cargando &#x3D; true;
+
+  /** Mensaje de error mostrado en pantalla */
+  mensajeError &#x3D; &#x27;&#x27;;
+
+  /** Indica si la carga de resultados fue exitosa. */
+  cargaExitosa &#x3D; false;
+
+  /** Código utilizado para realizar la búsqueda. */
+  codigo &#x3D; &#x27;&#x27;;
+
+  /** Tipo de búsqueda seleccionado. */
+  tipoBusqueda &#x3D; 1;
+
+  /**
+   * Inicializa el componente obteniendo los parámetros
+   * de la URL y ejecutando la búsqueda correspondiente.
+   */
+  ngOnInit() {
+    this.codigo &#x3D; this.route.snapshot.paramMap.get(&#x27;codigo&#x27;) ?? &#x27;&#x27;;
+    this.tipoBusqueda &#x3D; parseInt(this.route.snapshot.paramMap.get(&#x27;tipo&#x27;) ?? &#x27;&#x27;);
+    this.cargarAviones(this.codigo, this.definirTipoBusqueda(this.codigo, this.tipoBusqueda));
+  }
+
+  /**
+   * Determina el tipo de búsqueda a realizar
+   * según el código recibido y el tipo seleccionado.
+   *
+   * @param codigo Código de aeropuerto o vuelo.
+   * @param tipoBusqueda Tipo de búsqueda indicado en la ruta.
+   * @returns Tipo de búsqueda que debe ejecutarse.
+   */
+  definirTipoBusqueda(codigo:string, tipoBusqueda:number){
+    if (tipoBusqueda &#x3D;&#x3D;&#x3D; 1) {
+      if(codigo.length &#x3D;&#x3D;&#x3D; 3) return TipoBusqueda.IATA;
+      else return TipoBusqueda.ICAO;
+    } else {
+      if(codigo.length &#x3D;&#x3D;&#x3D; 5) return TipoBusqueda.FLIGHT_IATA;
+      else return TipoBusqueda.FLIGHT_ICAO;
+    }
+  }
+
+  /**
+   * Ejecuta la búsqueda de vuelos utilizando
+   * el servicio correspondiente al tipo indicado.
+   *
+   * @param codigo Código de búsqueda.
+   * @param tipoBusqueda Tipo de búsqueda a ejecutar.
+   */
+  cargarAviones(codigo:string, tipoBusqueda:TipoBusqueda) {
+    this.rutas[tipoBusqueda](codigo).pipe(
+      finalize(() &#x3D;&gt; {
+        this.cargando &#x3D; false;
+        this.cdr.detectChanges();
+      })
+    ).subscribe({
+      next: (response) &#x3D;&gt; {
+          if(response &#x3D;&#x3D;&#x3D; null || response.length &#x3D;&#x3D;&#x3D; 0){
+            this.mensajeError &#x3D; &#x27;No se han encontrado aviones que coincidan con tu busqueda&#x27;;
+          } else {
+            this.aviones &#x3D; response;
+            this.cargaExitosa &#x3D; true;
+          }
+          this.guardarHistorial(codigo, tipoBusqueda);
+      }, error: () &#x3D;&gt; {
+          this.toast.mostrar(&#x27;Error al realizar la busqueda&#x27;,false);
+      }
+    });
+  }
+
+  /**
+   * Guarda la búsqueda realizada en el historial
+   * del usuario autenticado.
+   *
+   * @param codigo Código buscado.
+   * @param tipoBusqueda Tipo de búsqueda realizada.
+   */
+  guardarHistorial(codigo:string, tipoBusqueda:TipoBusqueda) {
+    const idUsuario &#x3D; this.jwt.getIdUsuario();
+    if (!idUsuario) return;
+
+    const historial: Historial &#x3D; {
+      idUsuario,
+      busqueda: codigo,
+      tipoBusqueda,
+    };
+
+    this.historialService.crear(historial).subscribe({
+      next: () &#x3D;&gt; {
+        this.toast.mostrar(&#x27;La busqueda ha sido agregada a tu historial exitosamente&#x27;, true);
+      }, error: () &#x3D;&gt; {
+        this.toast.mostrar(&#x27;Error al agregar tu busqueda a tu historial&#x27;, false);
+      }
+    });
+
+  }
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;div class&#x3D;&quot;auditorias-container&quot;&gt;
+
+  &lt;div class&#x3D;&quot;auditorias-header&quot;&gt;
+    &lt;div class&#x3D;&quot;header-content&quot;&gt;
+      &lt;div class&#x3D;&quot;header-icon&quot;&gt;
+        &lt;i class&#x3D;&quot;bi bi-airplane-fill&quot;&gt;&lt;/i&gt;
+      &lt;/div&gt;
+      &lt;div&gt;
+        &lt;h2&gt;Aviones&lt;/h2&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;div *ngIf&#x3D;&quot;cargando&quot; class&#x3D;&quot;loading-container&quot;&gt;
+    &lt;div class&#x3D;&quot;spinner-perfil&quot;&gt;&lt;/div&gt;
+    &lt;p&gt;Cargando aviones...&lt;/p&gt;
+  &lt;/div&gt;
+
+  &lt;div *ngIf&#x3D;&quot;mensajeError&quot; class&#x3D;&quot;mensaje mensaje-error&quot;&gt;{{ mensajeError }}&lt;/div&gt;
+
+  &lt;div *ngIf&#x3D;&quot;cargaExitosa&quot; class&#x3D;&quot;contenedor-aviones&quot;&gt;
+
+    &lt;div class&#x3D;&quot;aviones&quot; *ngFor&#x3D;&quot;let avion of aviones&quot;&gt;
+
+      &lt;div class&#x3D;&quot;flight-hero&quot;&gt;
+        &lt;div class&#x3D;&quot;flight-id&quot;&gt;
+          &lt;i class&#x3D;&quot;bi bi-airplane-engines flight-icon&quot;&gt;&lt;/i&gt;
+          &lt;div&gt;
+            &lt;div class&#x3D;&quot;flight-number&quot;&gt;
+              {{ avion.flight.iataNumber }} · {{ avion.flight.icaoNumber }}
+            &lt;/div&gt;
+            &lt;div class&#x3D;&quot;flight-airline&quot;&gt;
+              {{ avion.airline.name }} · {{ avion.aircraft.regNumber }}
+            &lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+        &lt;span class&#x3D;&quot;badge-status&quot; [class]&#x3D;&quot;&#x27;status-&#x27; + avion.status&quot;&gt;
+          {{ avion.status }}
+        &lt;/span&gt;
+      &lt;/div&gt;
+
+      &lt;div class&#x3D;&quot;route-section celda&quot;&gt;
+        &lt;div class&#x3D;&quot;route-airport&quot;&gt;
+          &lt;div class&#x3D;&quot;airport-code&quot;&gt;{{ avion.departure.iataCode }}&lt;/div&gt;
+          &lt;div class&#x3D;&quot;airport-icao&quot;&gt;{{ avion.departure.icaoCode }}&lt;/div&gt;
+          &lt;div class&#x3D;&quot;route-label&quot;&gt;Salida&lt;/div&gt;
+        &lt;/div&gt;
+        &lt;i class&#x3D;&quot;bi bi-airplane&quot;&gt;&lt;/i&gt;
+        &lt;div class&#x3D;&quot;route-airport arrival&quot;&gt;
+          &lt;div class&#x3D;&quot;airport-code&quot;&gt;{{ avion.arrival.iataCode }}&lt;/div&gt;
+          &lt;div class&#x3D;&quot;airport-icao&quot;&gt;{{ avion.arrival.icaoCode }}&lt;/div&gt;
+          &lt;div class&#x3D;&quot;route-label&quot;&gt;Llegada&lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+
+      &lt;div class&#x3D;&quot;data-grid celda&quot;&gt;
+        &lt;div class&#x3D;&quot;data-cell&quot;&gt;
+          &lt;div class&#x3D;&quot;data-label&quot;&gt;Altitud&lt;/div&gt;
+          &lt;div class&#x3D;&quot;data-value&quot;&gt;{{ avion.geography.altitude | number }} ft&lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class&#x3D;&quot;data-cell&quot;&gt;
+          &lt;div class&#x3D;&quot;data-label&quot;&gt;Velocidad&lt;/div&gt;
+          &lt;div class&#x3D;&quot;data-value&quot;&gt;{{ avion.speed.horizontal | number }} km/h&lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class&#x3D;&quot;data-cell&quot;&gt;
+          &lt;div class&#x3D;&quot;data-label&quot;&gt;Rumbo&lt;/div&gt;
+          &lt;div class&#x3D;&quot;data-value&quot;&gt;{{ avion.geography.direction }}°&lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+
+      &lt;div class&#x3D;&quot;tech-section celda&quot;&gt;
+        &lt;div class&#x3D;&quot;tech-item&quot;&gt;
+          &lt;span class&#x3D;&quot;tech-label&quot;&gt;ICAO 24&lt;/span&gt;
+          &lt;span class&#x3D;&quot;tech-value&quot;&gt;{{ avion.aircraft.icao24 }}&lt;/span&gt;
+        &lt;/div&gt;
+        &lt;div class&#x3D;&quot;tech-item&quot;&gt;
+          &lt;span class&#x3D;&quot;tech-label&quot;&gt;ICAO aeronave&lt;/span&gt;
+          &lt;span class&#x3D;&quot;tech-value&quot;&gt;{{ avion.aircraft.icaoCode }}&lt;/span&gt;
+        &lt;/div&gt;
+        &lt;div class&#x3D;&quot;tech-item&quot;&gt;
+          &lt;span class&#x3D;&quot;tech-label&quot;&gt;Vuelo N°&lt;/span&gt;
+          &lt;span class&#x3D;&quot;tech-value&quot;&gt;{{ avion.flight.number }}&lt;/span&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+
+    &lt;/div&gt;
+
+  &lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+    </div>
+
+
+    <div class="tab-pane fade " id="tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis-network.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><div class="auditorias-container">  <div class="auditorias-header">    <div class="header-content">      <div class="header-icon">        <i class="bi bi-airplane-fill"></i>      </div>      <div>        <h2>Aviones</h2>      </div>    </div>  </div>  <div *ngIf="cargando" class="loading-container">    <div class="spinner-perfil"></div>    <p>Cargando aviones...</p>  </div>  <div *ngIf="mensajeError" class="mensaje mensaje-error">{{ mensajeError }}</div>  <div *ngIf="cargaExitosa" class="contenedor-aviones">    <div class="aviones" *ngFor="let avion of aviones">      <div class="flight-hero">        <div class="flight-id">          <i class="bi bi-airplane-engines flight-icon"></i>          <div>            <div class="flight-number">              {{ avion.flight.iataNumber }} · {{ avion.flight.icaoNumber }}            </div>            <div class="flight-airline">              {{ avion.airline.name }} · {{ avion.aircraft.regNumber }}            </div>          </div>        </div>        <span class="badge-status" [class]="\'status-\' + avion.status">          {{ avion.status }}        </span>      </div>      <div class="route-section celda">        <div class="route-airport">          <div class="airport-code">{{ avion.departure.iataCode }}</div>          <div class="airport-icao">{{ avion.departure.icaoCode }}</div>          <div class="route-label">Salida</div>        </div>        <i class="bi bi-airplane"></i>        <div class="route-airport arrival">          <div class="airport-code">{{ avion.arrival.iataCode }}</div>          <div class="airport-icao">{{ avion.arrival.icaoCode }}</div>          <div class="route-label">Llegada</div>        </div>      </div>      <div class="data-grid celda">        <div class="data-cell">          <div class="data-label">Altitud</div>          <div class="data-value">{{ avion.geography.altitude | number }} ft</div>        </div>        <div class="data-cell">          <div class="data-label">Velocidad</div>          <div class="data-value">{{ avion.speed.horizontal | number }} km/h</div>        </div>        <div class="data-cell">          <div class="data-label">Rumbo</div>          <div class="data-value">{{ avion.geography.direction }}°</div>        </div>      </div>      <div class="tech-section celda">        <div class="tech-item">          <span class="tech-label">ICAO 24</span>          <span class="tech-value">{{ avion.aircraft.icao24 }}</span>        </div>        <div class="tech-item">          <span class="tech-label">ICAO aeronave</span>          <span class="tech-value">{{ avion.aircraft.icaoCode }}</span>        </div>        <div class="tech-item">          <span class="tech-label">Vuelo N°</span>          <span class="tech-value">{{ avion.flight.number }}</span>        </div>      </div>    </div>  </div></div></div>'
+    var COMPONENTS = [{'name': 'App', 'selector': 'app-root'},{'name': 'AuditoriaComponent', 'selector': 'app-auditoria-component'},{'name': 'Busqueda', 'selector': 'app-busqueda'},{'name': 'HistorialComponent', 'selector': 'app-historial-component'},{'name': 'Login', 'selector': 'app-login'},{'name': 'Main', 'selector': 'app-main'},{'name': 'Mapa', 'selector': 'app-mapa'},{'name': 'Nav', 'selector': 'app-nav'},{'name': 'Perfil', 'selector': 'app-perfil'},{'name': 'Principal', 'selector': 'app-principal'},{'name': 'Registro', 'selector': 'app-registro'},{'name': 'UsuarioCrud', 'selector': 'app-usuario-crud'}];
+    var DIRECTIVES = [];
+    var ACTUAL_COMPONENT = {'name': 'Busqueda'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'Busqueda.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script>
+               $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               checkToggle(darkModeState);
+               if ($darkModeToggleSwitchers.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

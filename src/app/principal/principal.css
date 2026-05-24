@@ -1,0 +1,72 @@
+.buscador-contenedor {
+  background-color: transparent;
+  position: absolute;
+  z-index: 1000;
+  margin-top: 2rem;
+  margin-left: 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1rem;
+  border-radius: 14px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  box-sizing: border-box;
+}
+
+.mapa {
+  width: 100%;
+  height: 100%;
+}
+
+.buscador-contenedor input {
+  border: 2px solid #e0e0e0;
+  border-radius: 10px;
+  padding: 0.5rem 0.75rem;
+  font-size: 0.9rem;
+  width: 80px;
+  transition: border-color 0.2s ease;
+  outline: none;
+  box-sizing: border-box;
+}
+
+.buscador-contenedor input:focus {
+  border-color: var(--color-secundario);
+  box-shadow: 0 0 0 0.2rem rgba(102, 126, 234, 0.25);
+  outline: none;
+}
+
+.buscador-contenedor select {
+  border: 2px solid #e0e0e0;
+  border-radius: 10px;
+  padding: 0.5rem 0.75rem;
+  font-size: 0.9rem;
+  background: white;
+  cursor: pointer;
+  outline: none;
+  transition: border-color 0.2s ease;
+}
+
+.buscador-contenedor select:focus {
+  border-color: var(--color-secundario);
+  box-shadow: 0 0 0 0.2rem rgba(102, 126, 234, 0.25);
+  outline: none;
+}
+
+.buscador-contenedor button {
+  background: var(--color-secundario);
+  color: white;
+  border: none;
+  border-radius: 10px;
+  padding: 0.5rem 1.2rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.buscador-contenedor button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+  background: var(--color-principal);
+}

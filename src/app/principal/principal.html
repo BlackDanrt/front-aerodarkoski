@@ -1,0 +1,13 @@
+  <div class="buscador-contenedor">
+    <input type="text" maxlength="6" #codigo>
+    <select #valor>
+      <option value="1">Código</option>
+      <option value="2">Código de vuelo</option>
+    </select>
+    <button (click)="buscar(codigo.value, valor.value)">Buscar</button>
+  </div>
+
+  <div class="mapa">
+    <app-mapa></app-mapa>
+  </div>
+

@@ -1,0 +1,355 @@
+.auditorias-container {
+  padding: 2rem;
+  min-height: 100vh;
+  max-width: 60vw;
+  margin: auto;
+}
+
+.auditorias-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  background: rgba(255, 255, 255, 0.95);
+  padding: 1.5rem 2rem;
+  border-radius: 20px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+}
+
+.header-content {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.header-icon {
+  width: 60px;
+  height: 60px;
+  background: var(--color-secundario);
+  border-radius: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 1.8rem;
+  flex-shrink: 0;
+}
+
+.auditorias-header h2 {
+  margin: 0;
+  font-weight: 700;
+  color: #333;
+  font-size: 1.5rem;
+}
+
+.header-subtitle {
+  margin: 0.25rem 0 0 0;
+  color: #888;
+  font-size: 0.9rem;
+}
+
+.mensaje {
+  border-radius: 12px;
+  padding: 1rem 1.5rem;
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  animation: fadeIn 0.3s ease;
+}
+
+.mensaje-exito {
+  background: #d4edda;
+  color: #155724;
+}
+
+.mensaje-error {
+  background: #f8d7da;
+  color: #721c24;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.auditorias-toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.search-box {
+  position: relative;
+  flex: 1;
+  min-width: 250px;
+  max-width: 450px;
+}
+
+.search-box i {
+  position: absolute;
+  left: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #aaa;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.search-box input {
+  padding-left: 2.8rem;
+  border-radius: 12px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.9);
+  height: 45px;
+  transition: all 0.3s ease;
+}
+
+.search-box input:focus {
+  border-color: #667eea;
+  box-shadow: 0 0 0 0.2rem rgba(102, 126, 234, 0.25);
+  outline: none;
+}
+
+.contador-badge {
+  background: rgba(255, 255, 255, 0.9);
+  color: #00376E;
+  padding: 0.5rem 1rem;
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  white-space: nowrap;
+}
+
+.loading-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 4rem;
+  gap: 1rem;
+}
+
+.spinner-perfil {
+  width: 40px;
+  height: 40px;
+  border: 4px solid rgba(0, 55, 110, 0.15);
+  border-top-color: var(--color-secundario);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.table-container {
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 20px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+  overflow-y: auto;
+  overflow-x: hidden;
+  max-height: calc(100vh - 380px);
+}
+
+.table {
+  margin: 0;
+  width: 100%;
+}
+
+.table thead th {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  background: var(--color-principal);
+  color: white;
+  font-weight: 600;
+  padding: 1rem 1.5rem;
+  border: none;
+  white-space: nowrap;
+}
+
+.table thead th:first-child { border-radius: 20px 0 0 0; }
+.table thead th:last-child  { border-radius: 0 20px 0 0; }
+
+.table tbody td {
+  padding: 1rem 1.5rem;
+  vertical-align: middle;
+  border-bottom: 1px solid #f0f0f0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.table tbody tr {
+  transition: background 0.2s ease;
+}
+
+.table tbody tr:hover {
+  background: #f8f9fa;
+}
+
+.id-cell {
+  font-weight: 700;
+  color: #667eea;
+  font-size: 0.9rem;
+  white-space: nowrap;
+}
+
+.cell-bold {
+  font-weight: 600;
+  color: #333;
+}
+
+.sin-datos {
+  text-align: center;
+  color: #888;
+  padding: 3rem !important;
+  font-size: 0.95rem;
+}
+
+.spin {
+  animation: spin 0.8s linear infinite;
+  display: inline-block;
+}
+
+.btn-buscar {
+  background: var(--color-secundario);
+  color: white;
+  border: none;
+  border-radius: 12px;
+  padding: 0.8rem 1.5rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  white-space: nowrap;
+  cursor: pointer;
+  user-select: none;
+}
+
+.btn-buscar:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+  background: var(--color-principal);
+}
+
+.btn-buscar:active {
+  transform: translateY(0);
+}
+
+.busqueda-badge {
+  background: var(--color-terciario);
+  color: var(--color-texto);
+  display: inline-flex;
+  align-items: center;
+  padding: 0.35rem 0.75rem;
+  border-radius: 10px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+@media (max-width: 768px) {
+
+  .auditorias-container {
+    padding: 1rem;
+    max-width: 100%;
+    margin-top: 1rem;
+  }
+
+  .auditorias-header {
+    padding: 1rem;
+    border-radius: 16px;
+    margin-bottom: 1rem;
+  }
+
+  .header-icon {
+    width: 45px;
+    height: 45px;
+    font-size: 1.3rem;
+  }
+
+  .auditorias-header h2 {
+    font-size: 1.1rem;
+  }
+
+  .table-container {
+    background: transparent;
+    box-shadow: none;
+    border-radius: 0;
+    max-height: calc(100vh - 200px);
+  }
+
+  .table thead {
+    display: none;
+  }
+
+  .table tbody,
+  .table tr,
+  .table td {
+    display: block;
+    width: 100%;
+  }
+
+  .table tbody tr {
+    background: #ffffff;
+    border-radius: 16px;
+    margin-bottom: 0.75rem;
+    padding: 0;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+    border: 1px solid #e2e8f0;
+    overflow: hidden;
+  }
+
+  .table tbody tr:last-child {
+    margin-bottom: 0;
+  }
+
+  .table tbody td.busqueda {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    padding: 0;
+    gap: 0;
+  }
+
+  .busqueda-badge {
+    display: block;
+    width: 100%;
+    padding: 1rem;
+    border-radius: 0;
+    background: var(--color-principal);
+    color: white;
+    font-size: 1rem;
+    text-align: center;
+    word-break: break-word;
+  }
+
+  .btn-buscar {
+    width: 100%;
+    border-radius: 0;
+    padding: 0.9rem;
+    font-size: 1rem;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .table tbody tr td[colspan="7"] {
+    padding: 2rem;
+    text-align: center;
+    background: white;
+    border-radius: 16px;
+  }
+
+  .loading-container {
+    padding: 3rem 1rem;
+  }
+}
+
