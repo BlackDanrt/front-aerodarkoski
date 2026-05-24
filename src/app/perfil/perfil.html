@@ -3,10 +3,11 @@
   <p class="text-muted">Cargando perfil...</p>
 </div>
 
-<div *ngIf="!cargando && mensajeError && !usuario.id" class="error-sesion animate__animated animate__fadeIn">
-  <i class="bi bi-exclamation-triangle-fill" style="font-size: 3rem; color: #f5576c;"></i>
-  <h3>{{ mensajeError }}</h3>
-  <p>Redirigiendo al login...</p>
+<div *ngIf="!cargando && mensajeError && !usuario.id" class="config-container">
+  <div class="error-sesion animate__animated animate__fadeIn">
+    <h3>{{ mensajeError }}</h3>
+    <p>Redirigiendo al login...</p>
+  </div>
 </div>
 
 <div *ngIf="!cargando && usuario.id" class="config-container">

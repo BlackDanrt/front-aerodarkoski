@@ -6,6 +6,12 @@ import { Router } from '@angular/router';
 import { finalize, timeout } from 'rxjs';
 import {ToastService} from '../services/toast-service';
 
+/**
+ * Componente encargado de visualizar y actualizar
+ * la información del perfil del usuario autenticado.
+ * @author Juan Martinez
+ * @version 1.0
+ */
 @Component({
   selector: 'app-perfil',
   standalone: false,
@@ -13,29 +19,55 @@ import {ToastService} from '../services/toast-service';
   styleUrl: './perfil.css',
 })
 export class Perfil {
+  /** Servicio para forzar la detección manual de cambios. */
   private cdr = inject(ChangeDetectorRef);
+
+  /** Servicio para la gestión de usuarios. */
   private usuarioService = inject(UsuarioService);
+
+  /** Servicio para acceder a la información del JWT. */
   private jwt = inject(JwtService);
+
+  /** Servicio de navegación entre rutas. */
   private router = inject(Router);
+
+  /** Servicio para mostrar notificaciones al usuario. */
   private toast = inject(ToastService);
 
+  /** Información del usuario autenticado. */
   usuario: Usuario = {
     id: undefined,
     nombreUsuario: '',
     contrasenia: ''
   };
 
+  /** Confirmación de contraseña ingresada por el usuario. */
   confirmarContrasenia = '';
 
+  /** Mensaje de error mostrado en pantalla. */
   mensajeError = '';
+
+  /** Indica si ocurrió un error durante la carga. */
   errorCarga = false;
+
+  /** Indica si los datos se encuentran cargando. */
   cargando = true;
+
+  /** Indica si se está realizando una actualización. */
   guardando = false;
 
+  /**
+   * Inicializa el componente cargando los datos
+   * del usuario autenticado.
+   */
   ngOnInit() {
     this.cargarDatos();
   }
 
+  /**
+   * Obtiene la información del usuario autenticado
+   * desde el servidor.
+   */
   cargarDatos() {
     const idUsuario = this.jwt.getIdUsuario();
 
@@ -78,6 +110,10 @@ export class Perfil {
     });
   }
 
+  /**
+   * Valida y guarda los cambios realizados
+   * en el perfil del usuario.
+   */
   guardarCambios() {
     const hayContrasenia = this.usuario.contrasenia && this.usuario.contrasenia.length > 0;
     const hayConfirmacion = this.confirmarContrasenia && this.confirmarContrasenia.length > 0;
@@ -103,7 +139,7 @@ export class Perfil {
 
     if (hayContrasenia) payload.contrasenia = this.usuario.contrasenia;
 
-    if(this.usuario.id === null) return;
+    if(!this.usuario.id) return;
 
     this.usuarioService.actualizar(payload as Usuario, this.usuario.id).pipe(
       finalize(() => {
@@ -116,8 +152,8 @@ export class Perfil {
         this.confirmarContrasenia = '';
 
         // Guardar nuevo token
-        if (respuesta?.token) {
-          this.jwt.setToken(respuesta.token);
+        if (respuesta.trim()) {
+          this.jwt.setToken(respuesta.trim());
         }
 
         this.toast.mostrar('Cambios guardados correctamente', true);
@@ -125,8 +161,9 @@ export class Perfil {
       error: (err) => {
         if (err.status === 403) {
           this.toast.mostrar('Sesión expirada. Inicie sesión nuevamente', false);
-          this.jwt.removerToken();
+          localStorage.removeItem('token');
           setTimeout(() => this.router.navigate(['/login']), 2000);
+
         } else {
           this.toast.mostrar('Error al guardar los cambios', false);
         }
@@ -134,6 +171,10 @@ export class Perfil {
     });
   }
 
+  /**
+   * Cancela la edición del perfil y regresa
+   * a la página principal.
+   */
   cancelar() {
     this.router.navigate(['/principal']);
   }

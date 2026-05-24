@@ -3,6 +3,13 @@ import {inject} from '@angular/core';
 import {AuthService} from '../services/auth-service';
 import {ToastService} from '../services/toast-service';
 
+/**
+ * Guard encargado de validar que el usuario
+ * se encuentre autenticado y posea los roles
+ * necesarios para acceder a una ruta protegida.
+ * @author Juan Martinez
+ * @version 1.0
+ */
 export const routerGuard: CanActivateFn = (route) => {
 
   /** Instancia del servicio de autenticación */

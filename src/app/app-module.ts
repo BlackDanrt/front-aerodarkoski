@@ -17,7 +17,18 @@ import { AuditoriaComponent } from './auditoria/auditoria';
 import { Busqueda } from './busqueda/busqueda';
 import { HistorialComponent } from './historial-component/historial-component';
 
+/**
+ * Módulo raíz de la aplicación AeroDarkoski.
+ *
+ * Declara los componentes principales, configura los módulos
+ * necesarios para el funcionamiento de la aplicación y registra
+ * los proveedores globales como el cliente HTTP y los interceptores.
+ *
+ * @author Juan Martinez
+ * @version 1.0
+ */
 @NgModule({
+  /** Componentes declarados en la aplicación */
   declarations: [
     App,
     Nav,
@@ -32,9 +43,20 @@ import { HistorialComponent } from './historial-component/historial-component';
     Busqueda,
     HistorialComponent,
   ],
+
+  /** Módulos importados */
   imports: [BrowserModule, AppRoutingModule, FormsModule],
+
+  /** Servicios globales */
   providers: [
+    /**
+     * Configura el manejo global de errores del navegador.
+     */
     provideBrowserGlobalErrorListeners(),
+    /**
+     * Configura el cliente HTTP e incorpora el interceptor
+     * encargado de adjuntar el token JWT a las peticiones.
+     */
     provideHttpClient(withInterceptors([authInterceptorInterceptor])),
   ],
   bootstrap: [App],

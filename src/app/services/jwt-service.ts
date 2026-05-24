@@ -83,7 +83,6 @@ export class JwtService {
   /**
    * Obtiene el nombre de usuario (subject) del token
    */
-
   getNombreUsuario(): string | null {
     const token = this.getToken();
     if (!token) return null;

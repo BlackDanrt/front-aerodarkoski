@@ -1,0 +1,2546 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>proyectofinal documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+          <script>
+               // Blocking script to avoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+          </script>
+          <script>
+              // --- Iframe navigation tracking for Template Playground ---
+              function sendCurrentUrlToParent() {
+                  if (window.parent && window.parent !== window) {
+                      window.parent.postMessage({
+                          type: 'compodoc-iframe-navigate',
+                          url: window.location.pathname + window.location.hash
+                      }, '*');
+                  }
+              }
+              window.addEventListener('hashchange', sendCurrentUrlToParent, false);
+              window.addEventListener('popstate', sendCurrentUrlToParent, false);
+              window.addEventListener('DOMContentLoaded', sendCurrentUrlToParent, false);
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-md-none p-0">
+               <div class="d-flex">
+                    <a href="../" class="navbar-brand">proyectofinal documentation</a>
+                    <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+               </div>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="d-none d-md-block menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+
+
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">Components</li>
+  <li class="breadcrumb-item"
+  >
+  UsuarioCrud</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+            <a href="#info" class="nav-link active"
+                role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li class="nav-item">
+            <a href="#source" class="nav-link"
+                role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li class="nav-item">
+            <a href="#templateData" class="nav-link"
+                role="tab" id="templateData-tab" data-bs-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li class="nav-item">
+            <a href="#tree" class="nav-link"
+                role="tab" id="tree-tab" data-bs-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/usuario-crud/usuario-crud.ts</code>
+</p>
+
+
+    <p class="comment">
+        <h3>Description</h3>
+    </p>
+    <p class="comment">
+        <p>Componente encargado de la gestión de usuarios del sistema(CRUD).</p>
+
+    </p>
+
+
+
+
+<section data-compodoc="block-metadata">
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover metadata">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>app-usuario-crud</code></td>
+            </tr>
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./usuario-crud.html</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">styleUrl</td>
+                <td class="col-md-9"><code>./usuario-crud.css</code></td>
+            </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-index">
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#cargando" >cargando</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#cdr" >cdr</a>
+                            </li>
+                            <li>
+                                <a href="#confirmarContrasenia" >confirmarContrasenia</a>
+                            </li>
+                            <li>
+                                <a href="#confirmarCorreo" >confirmarCorreo</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#filtroSubject" >filtroSubject</a>
+                            </li>
+                            <li>
+                                <a href="#filtroTexto" >filtroTexto</a>
+                            </li>
+                            <li>
+                                <a href="#guardando" >guardando</a>
+                            </li>
+                            <li>
+                                <a href="#idUsuarioActual" >idUsuarioActual</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#jwtService" >jwtService</a>
+                            </li>
+                            <li>
+                                <a href="#mensajeError" >mensajeError</a>
+                            </li>
+                            <li>
+                                <a href="#mensajeExito" >mensajeExito</a>
+                            </li>
+                            <li>
+                                <a href="#modoEdicion" >modoEdicion</a>
+                            </li>
+                            <li>
+                                <a href="#mostrarConfirmacion" >mostrarConfirmacion</a>
+                            </li>
+                            <li>
+                                <a href="#mostrarModal" >mostrarModal</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#ngZone" >ngZone</a>
+                            </li>
+                            <li>
+                                <a href="#roles" >roles</a>
+                            </li>
+                            <li>
+                                <a href="#usuarioAEliminar" >usuarioAEliminar</a>
+                            </li>
+                            <li>
+                                <a href="#usuarioForm" >usuarioForm</a>
+                            </li>
+                            <li>
+                                <a href="#usuarios" >usuarios</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#usuarioService" >usuarioService</a>
+                            </li>
+                            <li>
+                                <a href="#usuariosFiltradosCache" >usuariosFiltradosCache</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#abrirCrear" >abrirCrear</a>
+                            </li>
+                            <li>
+                                <a href="#abrirEditar" >abrirEditar</a>
+                            </li>
+                            <li>
+                                <a href="#aplicarFiltro" >aplicarFiltro</a>
+                            </li>
+                            <li>
+                                <a href="#buscarPorUsuario" >buscarPorUsuario</a>
+                            </li>
+                            <li>
+                                <a href="#cancelarEliminar" >cancelarEliminar</a>
+                            </li>
+                            <li>
+                                <a href="#cargarUsuarios" >cargarUsuarios</a>
+                            </li>
+                            <li>
+                                <a href="#cerrarModal" >cerrarModal</a>
+                            </li>
+                            <li>
+                                <a href="#confirmarEliminar" >confirmarEliminar</a>
+                            </li>
+                            <li>
+                                <a href="#eliminar" >eliminar</a>
+                            </li>
+                            <li>
+                                <a href="#guardar" >guardar</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnInit" >ngOnInit</a>
+                            </li>
+                            <li>
+                                <a href="#onFiltroChange" >onFiltroChange</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+
+
+
+
+
+    <section data-compodoc="block-methods">
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="abrirCrear"></a>
+                    <span class="name">
+                        <span ><b>abrirCrear</b></span>
+                        <a href="#abrirCrear"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>abrirCrear()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="176"
+                                    class="link-to-prism">src/app/usuario-crud/usuario-crud.ts:176</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Abre el modal para crear un nuevo usuario.</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="abrirEditar"></a>
+                    <span class="name">
+                        <span ><b>abrirEditar</b></span>
+                        <a href="#abrirEditar"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>abrirEditar(usuario: <a href="../interfaces/Usuario.html" target="_self">Usuario</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="198"
+                                    class="link-to-prism">src/app/usuario-crud/usuario-crud.ts:198</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Abre el modal para editar un usuario existente.</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                                <td>Description</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>usuario</td>
+                                            <td>
+                                                            <code><a href="../interfaces/Usuario.html" target="_self" >Usuario</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <p>Usuario a editar</p>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="aplicarFiltro"></a>
+                    <span class="name">
+                        <span ><b>aplicarFiltro</b></span>
+                        <a href="#aplicarFiltro"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>aplicarFiltro()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="160"
+                                    class="link-to-prism">src/app/usuario-crud/usuario-crud.ts:160</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Filtra la lista de usuarios según el texto ingresado.</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="buscarPorUsuario"></a>
+                    <span class="name">
+                        <span ><b>buscarPorUsuario</b></span>
+                        <a href="#buscarPorUsuario"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>buscarPorUsuario(index: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>, usuario: <a href="../interfaces/Usuario.html" target="_self">Usuario</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="143"
+                                    class="link-to-prism">src/app/usuario-crud/usuario-crud.ts:143</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Retorna el identificador de un usuario para optimizar el renderizado.</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                                <td>Description</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>index</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <p>Índice del elemento</p>
+
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                                <td>usuario</td>
+                                            <td>
+                                                            <code><a href="../interfaces/Usuario.html" target="_self" >Usuario</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <p>Usuario evaluado</p>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                <p>Identificador del usuario</p>
+
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="cancelarEliminar"></a>
+                    <span class="name">
+                        <span ><b>cancelarEliminar</b></span>
+                        <a href="#cancelarEliminar"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>cancelarEliminar()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="338"
+                                    class="link-to-prism">src/app/usuario-crud/usuario-crud.ts:338</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Cancela la eliminación de un usuario.</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="cargarUsuarios"></a>
+                    <span class="name">
+                        <span ><b>cargarUsuarios</b></span>
+                        <a href="#cargarUsuarios"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>cargarUsuarios()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="109"
+                                    class="link-to-prism">src/app/usuario-crud/usuario-crud.ts:109</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Carga la lista de usuarios desde el servidor.</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="cerrarModal"></a>
+                    <span class="name">
+                        <span ><b>cerrarModal</b></span>
+                        <a href="#cerrarModal"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>cerrarModal()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="217"
+                                    class="link-to-prism">src/app/usuario-crud/usuario-crud.ts:217</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Cierra el modal y reinicia el formulario.</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="confirmarEliminar"></a>
+                    <span class="name">
+                        <span ><b>confirmarEliminar</b></span>
+                        <a href="#confirmarEliminar"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>confirmarEliminar(usuario: <a href="../interfaces/Usuario.html" target="_self">Usuario</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="328"
+                                    class="link-to-prism">src/app/usuario-crud/usuario-crud.ts:328</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Muestra el modal de confirmación para eliminar un usuario.</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                                <td>Description</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>usuario</td>
+                                            <td>
+                                                            <code><a href="../interfaces/Usuario.html" target="_self" >Usuario</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <p>Usuario a eliminar</p>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="eliminar"></a>
+                    <span class="name">
+                        <span ><b>eliminar</b></span>
+                        <a href="#eliminar"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>eliminar()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="348"
+                                    class="link-to-prism">src/app/usuario-crud/usuario-crud.ts:348</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Elimina el usuario seleccionado.</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="guardar"></a>
+                    <span class="name">
+                        <span ><b>guardar</b></span>
+                        <a href="#guardar"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>guardar()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="228"
+                                    class="link-to-prism">src/app/usuario-crud/usuario-crud.ts:228</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Guarda un nuevo usuario o actualiza uno existente.</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnInit"></a>
+                    <span class="name">
+                        <span ><b>ngOnInit</b></span>
+                        <a href="#ngOnInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnInit()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="93"
+                                    class="link-to-prism">src/app/usuario-crud/usuario-crud.ts:93</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Inicializa el componente y configura el filtro con debounce.</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="onFiltroChange"></a>
+                    <span class="name">
+                        <span ><b>onFiltroChange</b></span>
+                        <a href="#onFiltroChange"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>onFiltroChange(valor: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="152"
+                                    class="link-to-prism">src/app/usuario-crud/usuario-crud.ts:152</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Actualiza el valor del filtro y emite el cambio.</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                                <td>Description</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>valor</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <p>Texto ingresado en el filtro</p>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section data-compodoc="block-properties">
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="cargando"></a>
+                    <span class="name">
+                        <span ><b>cargando</b></span>
+                        <a href="#cargando"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>unknown</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>true</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="40" class="link-to-prism">src/app/usuario-crud/usuario-crud.ts:40</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Indica si los datos están cargando</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="cdr"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>cdr</b></span>
+                        <a href="#cdr"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>unknown</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>inject(ChangeDetectorRef)</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="31" class="link-to-prism">src/app/usuario-crud/usuario-crud.ts:31</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Servicio para forzar la detección de cambios</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="confirmarContrasenia"></a>
+                    <span class="name">
+                        <span ><b>confirmarContrasenia</b></span>
+                        <a href="#confirmarContrasenia"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;&#x27;</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="73" class="link-to-prism">src/app/usuario-crud/usuario-crud.ts:73</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Confirmación de contraseña ingresada por el usuario</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="confirmarCorreo"></a>
+                    <span class="name">
+                        <span ><b>confirmarCorreo</b></span>
+                        <a href="#confirmarCorreo"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;&#x27;</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="76" class="link-to-prism">src/app/usuario-crud/usuario-crud.ts:76</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Confirmación de correo ingresada por el usuario</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="filtroSubject"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>filtroSubject</b></span>
+                        <a href="#filtroSubject"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>unknown</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>new Subject&lt;string&gt;()</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="55" class="link-to-prism">src/app/usuario-crud/usuario-crud.ts:55</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Subject utilizado para aplicar debounce al filtro</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="filtroTexto"></a>
+                    <span class="name">
+                        <span ><b>filtroTexto</b></span>
+                        <a href="#filtroTexto"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;&#x27;</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="52" class="link-to-prism">src/app/usuario-crud/usuario-crud.ts:52</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Texto utilizado para filtrar usuarios</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="guardando"></a>
+                    <span class="name">
+                        <span ><b>guardando</b></span>
+                        <a href="#guardando"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>unknown</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="79" class="link-to-prism">src/app/usuario-crud/usuario-crud.ts:79</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Indica si se está realizando una operación de guardado</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="idUsuarioActual"></a>
+                    <span class="name">
+                        <span ><b>idUsuarioActual</b></span>
+                        <a href="#idUsuarioActual"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>number | null</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>null</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="49" class="link-to-prism">src/app/usuario-crud/usuario-crud.ts:49</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Identificador del usuario autenticado</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="jwtService"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>jwtService</b></span>
+                        <a href="#jwtService"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>unknown</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>inject(JwtService)</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="25" class="link-to-prism">src/app/usuario-crud/usuario-crud.ts:25</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Servicio para el manejo de tokens JWT</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="mensajeError"></a>
+                    <span class="name">
+                        <span ><b>mensajeError</b></span>
+                        <a href="#mensajeError"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;&#x27;</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="43" class="link-to-prism">src/app/usuario-crud/usuario-crud.ts:43</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Mensaje de error mostrado en pantalla</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="mensajeExito"></a>
+                    <span class="name">
+                        <span ><b>mensajeExito</b></span>
+                        <a href="#mensajeExito"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;&#x27;</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="46" class="link-to-prism">src/app/usuario-crud/usuario-crud.ts:46</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Mensaje de éxito mostrado en pantalla</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="modoEdicion"></a>
+                    <span class="name">
+                        <span ><b>modoEdicion</b></span>
+                        <a href="#modoEdicion"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>unknown</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="61" class="link-to-prism">src/app/usuario-crud/usuario-crud.ts:61</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Indica si el formulario está en modo edición</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="mostrarConfirmacion"></a>
+                    <span class="name">
+                        <span ><b>mostrarConfirmacion</b></span>
+                        <a href="#mostrarConfirmacion"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>unknown</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="85" class="link-to-prism">src/app/usuario-crud/usuario-crud.ts:85</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Indica si el modal de confirmación está visible</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="mostrarModal"></a>
+                    <span class="name">
+                        <span ><b>mostrarModal</b></span>
+                        <a href="#mostrarModal"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>unknown</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="58" class="link-to-prism">src/app/usuario-crud/usuario-crud.ts:58</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Indica si el modal está visible</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngZone"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>ngZone</b></span>
+                        <a href="#ngZone"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>unknown</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>inject(NgZone)</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="28" class="link-to-prism">src/app/usuario-crud/usuario-crud.ts:28</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Zona de Angular para ejecutar cambios manuales</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="roles"></a>
+                    <span class="name">
+                        <span ><b>roles</b></span>
+                        <a href="#roles"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>unknown</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>Object.values(Rol)</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="88" class="link-to-prism">src/app/usuario-crud/usuario-crud.ts:88</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Lista de roles disponibles</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="usuarioAEliminar"></a>
+                    <span class="name">
+                        <span ><b>usuarioAEliminar</b></span>
+                        <a href="#usuarioAEliminar"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/Usuario.html" target="_self" >Usuario | null</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>null</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="82" class="link-to-prism">src/app/usuario-crud/usuario-crud.ts:82</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Usuario seleccionado para eliminar</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="usuarioForm"></a>
+                    <span class="name">
+                        <span ><b>usuarioForm</b></span>
+                        <a href="#usuarioForm"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/Usuario.html" target="_self" >Usuario</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>{
+    id: undefined,
+    nombreUsuario: &#x27;&#x27;,
+    correo: &#x27;&#x27;,
+    contrasenia: &#x27;&#x27;,
+    rol: Rol.ADMINISTRADOR
+  }</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="64" class="link-to-prism">src/app/usuario-crud/usuario-crud.ts:64</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Modelo utilizado en el formulario de usuarios</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="usuarios"></a>
+                    <span class="name">
+                        <span ><b>usuarios</b></span>
+                        <a href="#usuarios"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/Usuario.html" target="_self" >Usuario[]</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="34" class="link-to-prism">src/app/usuario-crud/usuario-crud.ts:34</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Lista completa de usuarios</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="usuarioService"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>usuarioService</b></span>
+                        <a href="#usuarioService"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>unknown</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>inject(UsuarioService)</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="22" class="link-to-prism">src/app/usuario-crud/usuario-crud.ts:22</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Servicio para la gestión de usuarios</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="usuariosFiltradosCache"></a>
+                    <span class="name">
+                        <span ><b>usuariosFiltradosCache</b></span>
+                        <a href="#usuariosFiltradosCache"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/Usuario.html" target="_self" >Usuario[]</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="37" class="link-to-prism">src/app/usuario-crud/usuario-crud.ts:37</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Lista de usuarios filtrados</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+</section>
+
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import {ChangeDetectorRef, Component, inject, NgZone} from &#x27;@angular/core&#x27;;
+import {Rol} from &#x27;../enums/rol&#x27;;
+import {Usuario} from &#x27;../models/usuario&#x27;;
+import {UsuarioService} from &#x27;../services/usuario-service&#x27;;
+import {JwtService} from &#x27;../services/jwt-service&#x27;;
+import {debounceTime, distinctUntilChanged, finalize, Subject} from &#x27;rxjs&#x27;;
+
+/**
+ * Componente encargado de la gestión de usuarios del sistema(CRUD).
+ * @author Juan Martinez
+ * @version 1.0
+ */
+@Component({
+  selector: &#x27;app-usuario-crud&#x27;,
+  standalone: false,
+  templateUrl: &#x27;./usuario-crud.html&#x27;,
+  styleUrl: &#x27;./usuario-crud.css&#x27;,
+})
+export class UsuarioCrud {
+
+  /** Servicio para la gestión de usuarios */
+  private usuarioService &#x3D; inject(UsuarioService);
+
+  /** Servicio para el manejo de tokens JWT */
+  private jwtService &#x3D; inject(JwtService);
+
+  /** Zona de Angular para ejecutar cambios manuales */
+  private ngZone &#x3D; inject(NgZone);
+
+  /** Servicio para forzar la detección de cambios */
+  private cdr &#x3D; inject(ChangeDetectorRef);
+
+  /** Lista completa de usuarios */
+  usuarios: Usuario[] &#x3D; [];
+
+  /** Lista de usuarios filtrados */
+  usuariosFiltradosCache: Usuario[] &#x3D; [];
+
+  /** Indica si los datos están cargando */
+  cargando &#x3D; true;
+
+  /** Mensaje de error mostrado en pantalla */
+  mensajeError &#x3D; &#x27;&#x27;;
+
+  /** Mensaje de éxito mostrado en pantalla */
+  mensajeExito &#x3D; &#x27;&#x27;;
+
+  /** Identificador del usuario autenticado */
+  idUsuarioActual: number | null &#x3D; null;
+
+  /** Texto utilizado para filtrar usuarios */
+  filtroTexto &#x3D; &#x27;&#x27;;
+
+  /** Subject utilizado para aplicar debounce al filtro */
+  private filtroSubject &#x3D; new Subject&lt;string&gt;();
+
+  /** Indica si el modal está visible */
+  mostrarModal &#x3D; false;
+
+  /** Indica si el formulario está en modo edición */
+  modoEdicion &#x3D; false;
+
+  /** Modelo utilizado en el formulario de usuarios */
+  usuarioForm: Usuario &#x3D; {
+    id: undefined,
+    nombreUsuario: &#x27;&#x27;,
+    correo: &#x27;&#x27;,
+    contrasenia: &#x27;&#x27;,
+    rol: Rol.ADMINISTRADOR
+  };
+
+  /** Confirmación de contraseña ingresada por el usuario */
+  confirmarContrasenia &#x3D; &#x27;&#x27;;
+
+  /** Confirmación de correo ingresada por el usuario */
+  confirmarCorreo &#x3D; &#x27;&#x27;;
+
+  /** Indica si se está realizando una operación de guardado */
+  guardando &#x3D; false;
+
+  /** Usuario seleccionado para eliminar */
+  usuarioAEliminar: Usuario | null &#x3D; null;
+
+  /** Indica si el modal de confirmación está visible */
+  mostrarConfirmacion &#x3D; false;
+
+  /** Lista de roles disponibles */
+  roles &#x3D; Object.values(Rol);
+
+  /**
+   * Inicializa el componente y configura el filtro con debounce.
+   */
+  ngOnInit(): void {
+    this.idUsuarioActual &#x3D; this.jwtService.getIdUsuario();
+    this.filtroSubject.pipe(
+      debounceTime(300),
+      distinctUntilChanged()
+    ).subscribe(() &#x3D;&gt; {
+      this.aplicarFiltro();
+      this.cdr.detectChanges();
+    });
+
+    this.cargarUsuarios();
+  }
+
+  /**
+   * Carga la lista de usuarios desde el servidor.
+   */
+  cargarUsuarios(): void {
+    this.cargando &#x3D; true;
+    this.mensajeError &#x3D; &#x27;&#x27;;
+    this.mensajeExito &#x3D; &#x27;&#x27;;
+    this.cdr.detectChanges();
+
+    this.usuarioService.mostrar().pipe(
+      finalize(() &#x3D;&gt; {
+        this.cargando &#x3D; false;
+        this.aplicarFiltro();
+        this.cdr.detectChanges();
+      })
+    ).subscribe({
+      next: (response) &#x3D;&gt; {
+        let lista: Usuario[] &#x3D; [];
+        if (response.body) {
+          lista &#x3D; response.body;
+        }
+        this.usuarios &#x3D; lista.filter(u &#x3D;&gt; u.id !&#x3D;&#x3D;this.idUsuarioActual);
+        },
+      error: () &#x3D;&gt; {
+        this.mensajeError &#x3D; &#x27;Error al cargar los usuarios. Intente nuevamente.&#x27;;
+        this.usuarios &#x3D; [];
+      }
+    });
+  }
+
+  /**
+   * Retorna el identificador de un usuario para optimizar el renderizado.
+   *
+   * @param index Índice del elemento
+   * @param usuario Usuario evaluado
+   * @returns Identificador del usuario
+   */
+  buscarPorUsuario(index: number, usuario: Usuario): number {
+    return usuario.id || index;
+  }
+
+  /**
+   * Actualiza el valor del filtro y emite el cambio.
+   *
+   * @param valor Texto ingresado en el filtro
+   */
+  onFiltroChange(valor: string): void {
+    this.filtroTexto &#x3D; valor;
+    this.filtroSubject.next(valor);
+  }
+
+  /**
+   * Filtra la lista de usuarios según el texto ingresado.
+   */
+  aplicarFiltro(): void {
+    if (!this.filtroTexto.trim()) {
+      this.usuariosFiltradosCache &#x3D; [...this.usuarios];
+      return;
+    }
+
+    const texto &#x3D; this.filtroTexto.toLowerCase().trim();
+    this.usuariosFiltradosCache &#x3D; this.usuarios.filter(u &#x3D;&gt;
+      u.nombreUsuario?.toLowerCase().includes(texto) ||
+      u.rol?.toLowerCase().includes(texto)
+    );
+  }
+
+  /**
+   * Abre el modal para crear un nuevo usuario.
+   */
+  abrirCrear(): void {
+    this.modoEdicion &#x3D; false;
+    this.usuarioForm &#x3D; {
+      id: undefined,
+      nombreUsuario: &#x27;&#x27;,
+      correo: &#x27;&#x27;,
+      contrasenia: &#x27;&#x27;,
+      rol: Rol.ADMINISTRADOR
+    };
+    this.confirmarContrasenia &#x3D; &#x27;&#x27;;
+    this.confirmarCorreo &#x3D; &#x27;&#x27;;
+    this.mensajeError &#x3D; &#x27;&#x27;;
+    this.mensajeExito &#x3D; &#x27;&#x27;;
+    this.mostrarModal &#x3D; true;
+    this.cdr.detectChanges();
+  }
+
+  /**
+   * Abre el modal para editar un usuario existente.
+   *
+   * @param usuario Usuario a editar
+   */
+  abrirEditar(usuario: Usuario): void {
+    this.modoEdicion &#x3D; true;
+    this.usuarioForm &#x3D; {
+      id: usuario.id,
+      nombreUsuario: usuario.nombreUsuario,
+      correo: usuario.correo,
+      contrasenia: &#x27;&#x27;,
+      rol: usuario.rol || Rol.ADMINISTRADOR
+    };
+    this.confirmarContrasenia &#x3D; &#x27;&#x27;;
+    this.mensajeError &#x3D; &#x27;&#x27;;
+    this.mensajeExito &#x3D; &#x27;&#x27;;
+    this.mostrarModal &#x3D; true;
+    this.cdr.detectChanges();
+  }
+
+  /**
+   * Cierra el modal y reinicia el formulario.
+   */
+  cerrarModal(): void {
+    this.mostrarModal &#x3D; false;
+    this.usuarioForm &#x3D; { id: undefined, nombreUsuario: &#x27;&#x27;, contrasenia: &#x27;&#x27;, rol: Rol.ADMINISTRADOR };
+    this.confirmarContrasenia &#x3D; &#x27;&#x27;;
+    this.mensajeError &#x3D; &#x27;&#x27;;
+    this.cdr.detectChanges();
+  }
+
+  /**
+   * Guarda un nuevo usuario o actualiza uno existente.
+   */
+  guardar(): void {
+    if (this.guardando) return; // Evitar doble click
+
+    this.mensajeError &#x3D; &#x27;&#x27;;
+    this.mensajeExito &#x3D; &#x27;&#x27;;
+
+    if (!this.usuarioForm.nombreUsuario?.trim()) {
+      this.mensajeError &#x3D; &#x27;El nombre de usuario es requerido&#x27;;
+      this.cdr.detectChanges();
+      return;
+    }
+
+    if (!this.modoEdicion &amp;&amp; !this.usuarioForm.contrasenia) {
+      this.mensajeError &#x3D; &#x27;La contraseña es requerida para crear un usuario&#x27;;
+      this.cdr.detectChanges();
+      return;
+    }
+
+    if (this.usuarioForm.contrasenia) {
+      if (this.usuarioForm.contrasenia.length &lt; 6) {
+        this.mensajeError &#x3D; &#x27;La contraseña debe tener al menos 6 caracteres&#x27;;
+        this.cdr.detectChanges();
+        return;
+      }
+      if (this.usuarioForm.contrasenia !&#x3D;&#x3D; this.confirmarContrasenia) {
+        this.mensajeError &#x3D; &#x27;Las contraseñas no coinciden&#x27;;
+        this.cdr.detectChanges();
+        return;
+      }
+    }
+
+    if (this.usuarioForm.correo !&#x3D;&#x3D; this.confirmarCorreo) {
+      this.mensajeError &#x3D; &#x27;Los correos no coinciden&#x27;;
+      this.cdr.detectChanges();
+      return;
+    }
+
+    this.guardando &#x3D; true;
+    this.cdr.detectChanges();
+
+    const datos: Usuario &#x3D; {
+      nombreUsuario: this.usuarioForm.nombreUsuario.trim(),
+      correo: this.usuarioForm.correo,
+      rol: this.usuarioForm.rol
+    };
+
+    if (this.usuarioForm.contrasenia) {
+      datos.contrasenia &#x3D; this.usuarioForm.contrasenia;
+    }
+
+    if (this.modoEdicion &amp;&amp; this.usuarioForm.id) {
+      this.usuarioService.actualizar(datos, this.usuarioForm.id).pipe(
+        finalize(() &#x3D;&gt; {
+          this.guardando &#x3D; false;
+          this.cdr.detectChanges();
+        })
+      ).subscribe({
+        next: (resp: string) &#x3D;&gt; {
+          this.ngZone.run(() &#x3D;&gt; {
+            this.mensajeExito &#x3D; resp;
+            this.cerrarModal();
+            this.cargarUsuarios();
+          });
+        },
+        error: (err) &#x3D;&gt; {
+          this.ngZone.run(() &#x3D;&gt; {
+            this.mensajeError &#x3D; err.error || &#x27;Error al actualizar el usuario&#x27;;
+            this.cdr.detectChanges();
+          });
+        }
+      });
+    } else {
+      this.usuarioService.crear(datos).pipe(
+        finalize(() &#x3D;&gt; {
+          this.guardando &#x3D; false;
+          this.cdr.detectChanges();
+        })
+      ).subscribe({
+        next: (resp: string) &#x3D;&gt; {
+          this.ngZone.run(() &#x3D;&gt; {
+            this.mensajeExito &#x3D; resp;
+            this.cerrarModal();
+            this.cargarUsuarios();
+          });
+        },
+        error: (err) &#x3D;&gt; {
+          this.ngZone.run(() &#x3D;&gt; {
+            this.mensajeError &#x3D; err.error || &#x27;Error al crear el usuario&#x27;;
+            this.cdr.detectChanges();
+          });
+        }
+      });
+    }
+  }
+
+  /**
+   * Muestra el modal de confirmación para eliminar un usuario.
+   *
+   * @param usuario Usuario a eliminar
+   */
+  confirmarEliminar(usuario: Usuario): void {
+    this.usuarioAEliminar &#x3D; usuario;
+    this.mostrarConfirmacion &#x3D; true;
+    this.mensajeError &#x3D; &#x27;&#x27;;
+    this.cdr.detectChanges();
+  }
+
+  /**
+   * Cancela la eliminación de un usuario.
+   */
+  cancelarEliminar(): void {
+    this.usuarioAEliminar &#x3D; null;
+    this.mostrarConfirmacion &#x3D; false;
+    this.mensajeError &#x3D; &#x27;&#x27;;
+    this.cdr.detectChanges();
+  }
+
+  /**
+   * Elimina el usuario seleccionado.
+   */
+  eliminar(): void {
+    if (this.guardando || !this.usuarioAEliminar?.id) return;
+
+    this.guardando &#x3D; true;
+    this.cdr.detectChanges();
+
+    this.usuarioService.eliminar(this.usuarioAEliminar.id).pipe(
+      finalize(() &#x3D;&gt; {
+        this.guardando &#x3D; false;
+        this.usuarioAEliminar &#x3D; null;
+        this.mostrarConfirmacion &#x3D; false;
+        this.cdr.detectChanges();
+      })
+    ).subscribe({
+      next: (resp: string) &#x3D;&gt; {
+        this.ngZone.run(() &#x3D;&gt; {
+          this.mensajeExito &#x3D; resp;
+          this.cargarUsuarios();
+        });
+      },
+      error: (err) &#x3D;&gt; {
+        this.ngZone.run(() &#x3D;&gt; {
+          this.mensajeError &#x3D; err.error || &#x27;Error al eliminar el usuario&#x27;;
+          this.cdr.detectChanges();
+        });
+      }
+    });
+  }
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;div class&#x3D;&quot;usuarios-container&quot;&gt;
+
+  &lt;div class&#x3D;&quot;usuarios-header&quot;&gt;
+    &lt;div class&#x3D;&quot;header-content&quot;&gt;
+      &lt;div class&#x3D;&quot;header-icon&quot;&gt;
+        &lt;i class&#x3D;&quot;bi bi-people-fill&quot;&gt;&lt;/i&gt;
+      &lt;/div&gt;
+      &lt;div&gt;
+        &lt;h2&gt;Gestión de Usuarios&lt;/h2&gt;
+        &lt;p class&#x3D;&quot;header-subtitle&quot;&gt;Administra los usuarios del sistema&lt;/p&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;button class&#x3D;&quot;btn btn-crear&quot; (click)&#x3D;&quot;abrirCrear()&quot; type&#x3D;&quot;button&quot;&gt;
+      &lt;i class&#x3D;&quot;bi bi-plus-lg me-2&quot;&gt;&lt;/i&gt;Nuevo Usuario
+    &lt;/button&gt;
+  &lt;/div&gt;
+
+  &lt;div *ngIf&#x3D;&quot;mensajeExito&quot; class&#x3D;&quot;alert alert-success&quot;&gt;
+    &lt;i class&#x3D;&quot;bi bi-check-circle-fill me-2&quot;&gt;&lt;/i&gt;{{ mensajeExito }}
+  &lt;/div&gt;
+  &lt;div *ngIf&#x3D;&quot;mensajeError &amp;&amp; !mostrarModal &amp;&amp; !mostrarConfirmacion&quot; class&#x3D;&quot;alert alert-danger&quot;&gt;
+    &lt;i class&#x3D;&quot;bi bi-exclamation-triangle-fill me-2&quot;&gt;&lt;/i&gt;{{ mensajeError }}
+  &lt;/div&gt;
+
+  &lt;div class&#x3D;&quot;usuarios-toolbar&quot;&gt;
+    &lt;div class&#x3D;&quot;search-box&quot;&gt;
+      &lt;i class&#x3D;&quot;bi bi-search&quot;&gt;&lt;/i&gt;
+      &lt;input
+        type&#x3D;&quot;text&quot;
+        class&#x3D;&quot;form-control&quot;
+        placeholder&#x3D;&quot;Buscar por Nombre de Usuario o Rol&quot;
+        [value]&#x3D;&quot;filtroTexto&quot;
+        (input)&#x3D;&quot;onFiltroChange($any($event).target.value)&quot;
+        name&#x3D;&quot;filtroTexto&quot;
+      &gt;
+    &lt;/div&gt;
+    &lt;span class&#x3D;&quot;contador-badge&quot;&gt;
+      &lt;i class&#x3D;&quot;bi bi-people me-1&quot;&gt;&lt;/i&gt;
+      {{ usuariosFiltradosCache.length }} usuario{{ usuariosFiltradosCache.length !&#x3D;&#x3D; 1 ? &#x27;s&#x27; : &#x27;&#x27; }}
+    &lt;/span&gt;
+  &lt;/div&gt;
+
+  &lt;div *ngIf&#x3D;&quot;cargando&quot; class&#x3D;&quot;loading-container&quot;&gt;
+    &lt;div class&#x3D;&quot;spinner-usuarios&quot;&gt;&lt;/div&gt;
+    &lt;p class&#x3D;&quot;text-muted&quot;&gt;Cargando usuarios...&lt;/p&gt;
+  &lt;/div&gt;
+
+  &lt;div *ngIf&#x3D;&quot;!cargando&quot; class&#x3D;&quot;table-container&quot;&gt;
+    &lt;table class&#x3D;&quot;table table-hover&quot;&gt;
+      &lt;thead&gt;
+      &lt;tr&gt;
+        &lt;th&gt;ID&lt;/th&gt;
+        &lt;th&gt;Usuario&lt;/th&gt;
+        &lt;th&gt;Correo&lt;/th&gt;
+        &lt;th&gt;Rol&lt;/th&gt;
+        &lt;th class&#x3D;&quot;text-end&quot;&gt;Acciones&lt;/th&gt;
+      &lt;/tr&gt;
+      &lt;/thead&gt;
+      &lt;tbody&gt;
+      &lt;tr *ngFor&#x3D;&quot;let usuario of usuariosFiltradosCache; trackBy: buscarPorUsuario&quot;&gt;
+        &lt;td class&#x3D;&quot;id-cell&quot; data-label&#x3D;&quot;ID&quot;&gt;#{{ usuario.id }}&lt;/td&gt;
+        &lt;td&gt;
+          &lt;div class&#x3D;&quot;usuario-info&quot;&gt;
+            &lt;div class&#x3D;&quot;usuario-avatar&quot;&gt;
+              &lt;i class&#x3D;&quot;bi bi-person-circle&quot;&gt;&lt;/i&gt;
+            &lt;/div&gt;
+            &lt;span class&#x3D;&quot;usuario-nombre&quot;&gt;{{ usuario.nombreUsuario }}&lt;/span&gt;
+          &lt;/div&gt;
+        &lt;/td&gt;
+        &lt;td&gt;
+          &lt;div class&#x3D;&quot;usuario-info&quot;&gt;
+            &lt;span class&#x3D;&quot;usuario-nombre&quot;&gt;{{ usuario.correo }}&lt;/span&gt;
+          &lt;/div&gt;
+        &lt;/td&gt;
+        &lt;td&gt;
+            &lt;span class&#x3D;&quot;rol-badge rol-usuario&quot; &gt;
+              &lt;i class&#x3D;&quot;bi bi-person-fill&quot;&gt;&lt;/i&gt;
+              {{ usuario.rol }}
+            &lt;/span&gt;
+        &lt;/td&gt;
+        &lt;td class&#x3D;&quot;text-end&quot;&gt;
+          &lt;button class&#x3D;&quot;btn btn-action btn-editar me-2&quot;
+                  (click)&#x3D;&quot;abrirEditar(usuario)&quot;
+                  type&#x3D;&quot;button&quot;
+                  title&#x3D;&quot;Editar usuario&quot;&gt;
+            &lt;i class&#x3D;&quot;bi bi-pencil-square me-1&quot;&gt;&lt;/i&gt;
+            &lt;span class&#x3D;&quot;btn-text&quot;&gt;Editar&lt;/span&gt;
+          &lt;/button&gt;
+          &lt;button class&#x3D;&quot;btn btn-action btn-eliminar&quot;
+                  (click)&#x3D;&quot;confirmarEliminar(usuario)&quot;
+                  type&#x3D;&quot;button&quot;
+                  title&#x3D;&quot;Eliminar usuario&quot;&gt;
+            &lt;i class&#x3D;&quot;bi bi-trash-fill me-1&quot;&gt;&lt;/i&gt;
+            &lt;span class&#x3D;&quot;btn-text&quot;&gt;Eliminar&lt;/span&gt;
+          &lt;/button&gt;
+        &lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr *ngIf&#x3D;&quot;usuariosFiltradosCache.length &#x3D;&#x3D;&#x3D; 0&quot;&gt;
+        &lt;td colspan&#x3D;&quot;4&quot; class&#x3D;&quot;text-center py-5 text-muted&quot;&gt;
+          &lt;i class&#x3D;&quot;bi bi-inbox fs-1 d-block mb-2&quot;&gt;&lt;/i&gt;
+          No se encontraron usuarios
+        &lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;/tbody&gt;
+    &lt;/table&gt;
+  &lt;/div&gt;
+
+  &lt;div *ngIf&#x3D;&quot;mostrarModal&quot; class&#x3D;&quot;modal-overlay&quot; (click)&#x3D;&quot;cerrarModal()&quot;&gt;
+    &lt;div class&#x3D;&quot;modal-box&quot; (click)&#x3D;&quot;$event.stopPropagation()&quot;&gt;
+
+      &lt;div class&#x3D;&quot;modal-header&quot;&gt;
+        &lt;div class&#x3D;&quot;modal-icon&quot;&gt;
+          &lt;i class&#x3D;&quot;bi&quot; [class.bi-person-plus-fill]&#x3D;&quot;!modoEdicion&quot;
+             [class.bi-person-gear]&#x3D;&quot;modoEdicion&quot;&gt;&lt;/i&gt;
+        &lt;/div&gt;
+        &lt;h4&gt;{{ modoEdicion ? &#x27;Editar Usuario&#x27; : &#x27;Nuevo Usuario&#x27; }}&lt;/h4&gt;
+      &lt;/div&gt;
+
+      &lt;div class&#x3D;&quot;modal-body&quot;&gt;
+        &lt;div *ngIf&#x3D;&quot;mensajeError &amp;&amp; mostrarModal&quot; class&#x3D;&quot;alert alert-danger&quot;&gt;
+          &lt;i class&#x3D;&quot;bi bi-exclamation-triangle-fill me-2&quot;&gt;&lt;/i&gt;{{ mensajeError }}
+        &lt;/div&gt;
+
+        &lt;form (ngSubmit)&#x3D;&quot;guardar()&quot; autocomplete&#x3D;&quot;off&quot;&gt;
+
+          &lt;div class&#x3D;&quot;form-floating mb-3&quot;&gt;
+            &lt;input
+              type&#x3D;&quot;text&quot;
+              class&#x3D;&quot;form-control&quot;
+              id&#x3D;&quot;nombreUsuario&quot;
+              [(ngModel)]&#x3D;&quot;usuarioForm.nombreUsuario&quot;
+              name&#x3D;&quot;nombreUsuario&quot;
+              required
+              placeholder&#x3D;&quot;Nombre de usuario&quot;
+              autocomplete&#x3D;&quot;off&quot;
+            &gt;
+            &lt;label for&#x3D;&quot;nombreUsuario&quot;&gt;
+              &lt;i class&#x3D;&quot;bi bi-person me-2&quot;&gt;&lt;/i&gt;Nombre de Usuario
+            &lt;/label&gt;
+          &lt;/div&gt;
+
+          &lt;div class&#x3D;&quot;form-floating mb-3&quot;&gt;
+            &lt;select
+              class&#x3D;&quot;form-select&quot;
+              id&#x3D;&quot;rol&quot;
+              [(ngModel)]&#x3D;&quot;usuarioForm.rol&quot;
+              name&#x3D;&quot;rol&quot;
+            &gt;
+              &lt;option *ngFor&#x3D;&quot;let rol of roles&quot; [value]&#x3D;&quot;rol&quot;&gt;{{ rol }}&lt;/option&gt;
+            &lt;/select&gt;
+            &lt;label for&#x3D;&quot;rol&quot;&gt;
+              &lt;i class&#x3D;&quot;bi bi-shield me-2&quot;&gt;&lt;/i&gt;Rol
+            &lt;/label&gt;
+          &lt;/div&gt;
+
+
+          &lt;div class&#x3D;&quot;form-floating mb-3&quot;&gt;
+            &lt;input
+              type&#x3D;&quot;email&quot;
+              class&#x3D;&quot;form-control&quot;
+              id&#x3D;&quot;email&quot;
+              [(ngModel)]&#x3D;&quot;usuarioForm.correo&quot;
+              name&#x3D;&quot;correo&quot;
+              required
+              placeholder&#x3D;&quot;Correo electrónico&quot;
+              autocomplete&#x3D;&quot;email&quot;
+              [disabled]&#x3D;&quot;modoEdicion&quot;
+            &gt;
+            &lt;label for&#x3D;&quot;email&quot;&gt;
+              &lt;i class&#x3D;&quot;bi bi-envelope me-2&quot;&gt;&lt;/i&gt;
+              Correo Electrónico
+            &lt;/label&gt;
+          &lt;/div&gt;
+
+          &lt;div class&#x3D;&quot;form-floating mb-4&quot; *ngIf&#x3D;&quot;!modoEdicion&quot;&gt;
+            &lt;input
+              type&#x3D;&quot;email&quot;
+              class&#x3D;&quot;form-control&quot;
+              id&#x3D;&quot;confirmarEmail&quot;
+              [(ngModel)]&#x3D;&quot;confirmarCorreo&quot;
+              name&#x3D;&quot;confirmarCorreo&quot;
+              [required]&#x3D;&quot;!modoEdicion&quot;
+              placeholder&#x3D;&quot;Confirmar correo electrónico&quot;
+              autocomplete&#x3D;&quot;email&quot;
+            &gt;
+            &lt;label for&#x3D;&quot;confirmarEmail&quot;&gt;
+              &lt;i class&#x3D;&quot;bi bi-envelope-fill me-2&quot;&gt;&lt;/i&gt;Confirmar Correo
+              &lt;/label&gt;
+          &lt;/div&gt;
+
+          &lt;div class&#x3D;&quot;form-floating mb-3&quot;&gt;
+            &lt;input
+              type&#x3D;&quot;password&quot;
+              class&#x3D;&quot;form-control&quot;
+              id&#x3D;&quot;contrasenia&quot;
+              [(ngModel)]&#x3D;&quot;usuarioForm.contrasenia&quot;
+              name&#x3D;&quot;contrasenia&quot;
+              [required]&#x3D;&quot;!modoEdicion&quot;
+              placeholder&#x3D;&quot;Contraseña&quot;
+              minlength&#x3D;&quot;6&quot;
+              autocomplete&#x3D;&quot;new-password&quot;
+            &gt;
+            &lt;label for&#x3D;&quot;contrasenia&quot;&gt;
+              &lt;i class&#x3D;&quot;bi bi-lock me-2&quot;&gt;&lt;/i&gt;
+              {{ modoEdicion ? &#x27;Nueva Contraseña (opcional)&#x27; : &#x27;Contraseña&#x27; }}
+            &lt;/label&gt;
+          &lt;/div&gt;
+
+          &lt;div class&#x3D;&quot;form-floating mb-4&quot;&gt;
+            &lt;input
+              type&#x3D;&quot;password&quot;
+              class&#x3D;&quot;form-control&quot;
+              id&#x3D;&quot;confirmarContrasenia&quot;
+              [(ngModel)]&#x3D;&quot;confirmarContrasenia&quot;
+              name&#x3D;&quot;confirmarContrasenia&quot;
+              [required]&#x3D;&quot;usuarioForm.contrasenia ? true : false&quot;
+              placeholder&#x3D;&quot;Confirmar contraseña&quot;
+              autocomplete&#x3D;&quot;new-password&quot;
+            &gt;
+            &lt;label for&#x3D;&quot;confirmarContrasenia&quot;&gt;
+              &lt;i class&#x3D;&quot;bi bi-lock-fill me-2&quot;&gt;&lt;/i&gt;Confirmar Contraseña
+            &lt;/label&gt;
+          &lt;/div&gt;
+
+          &lt;div class&#x3D;&quot;modal-acciones&quot;&gt;
+            &lt;button type&#x3D;&quot;submit&quot; class&#x3D;&quot;btn btn-guardar&quot; [disabled]&#x3D;&quot;guardando&quot;&gt;
+              &lt;i class&#x3D;&quot;bi&quot; [class.bi-check-lg]&#x3D;&quot;!guardando&quot;
+                 [class.bi-arrow-repeat]&#x3D;&quot;guardando&quot; [class.spin]&#x3D;&quot;guardando&quot;&gt;&lt;/i&gt;
+              {{ guardando ? &#x27;Guardando...&#x27; : (modoEdicion ? &#x27;Actualizar&#x27; : &#x27;Crear&#x27;) }}
+            &lt;/button&gt;
+            &lt;button type&#x3D;&quot;button&quot; class&#x3D;&quot;btn btn-cancelar&quot; (click)&#x3D;&quot;cerrarModal()&quot; [disabled]&#x3D;&quot;guardando&quot;&gt;
+              &lt;i class&#x3D;&quot;bi bi-x-lg me-2&quot;&gt;&lt;/i&gt;Cancelar
+            &lt;/button&gt;
+          &lt;/div&gt;
+
+        &lt;/form&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;div *ngIf&#x3D;&quot;mostrarConfirmacion&quot; class&#x3D;&quot;modal-overlay&quot; (click)&#x3D;&quot;cancelarEliminar()&quot;&gt;
+    &lt;div class&#x3D;&quot;modal-box modal-confirmacion&quot; (click)&#x3D;&quot;$event.stopPropagation()&quot;&gt;
+
+      &lt;div class&#x3D;&quot;confirmacion-icono&quot;&gt;
+        &lt;i class&#x3D;&quot;bi bi-exclamation-triangle-fill&quot;&gt;&lt;/i&gt;
+      &lt;/div&gt;
+
+      &lt;h4&gt;¿Eliminar usuario?&lt;/h4&gt;
+      &lt;p class&#x3D;&quot;confirmacion-texto&quot;&gt;
+        Estás a punto de eliminar a &lt;strong&gt;{{ usuarioAEliminar?.nombreUsuario }}&lt;/strong&gt;.
+        &lt;br&gt;Esta acción no se puede deshacer.
+      &lt;/p&gt;
+
+      &lt;div *ngIf&#x3D;&quot;mensajeError &amp;&amp; mostrarConfirmacion&quot; class&#x3D;&quot;alert alert-danger mt-3&quot;&gt;
+        &lt;i class&#x3D;&quot;bi bi-exclamation-triangle-fill me-2&quot;&gt;&lt;/i&gt;{{ mensajeError }}
+      &lt;/div&gt;
+
+      &lt;div class&#x3D;&quot;modal-acciones&quot;&gt;
+        &lt;button class&#x3D;&quot;btn btn-eliminar-confirmar&quot; (click)&#x3D;&quot;eliminar()&quot; [disabled]&#x3D;&quot;guardando&quot; type&#x3D;&quot;button&quot;&gt;
+          &lt;i class&#x3D;&quot;bi&quot; [class.bi-trash-fill]&#x3D;&quot;!guardando&quot;
+             [class.bi-arrow-repeat]&#x3D;&quot;guardando&quot; [class.spin]&#x3D;&quot;guardando&quot;&gt;&lt;/i&gt;
+          {{ guardando ? &#x27;Eliminando...&#x27; : &#x27;Sí, Eliminar&#x27; }}
+        &lt;/button&gt;
+        &lt;button class&#x3D;&quot;btn btn-cancelar&quot; (click)&#x3D;&quot;cancelarEliminar()&quot; [disabled]&#x3D;&quot;guardando&quot; type&#x3D;&quot;button&quot;&gt;
+          &lt;i class&#x3D;&quot;bi bi-x-lg me-2&quot;&gt;&lt;/i&gt;Cancelar
+        &lt;/button&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+
+&lt;/div&gt;
+</code></pre>
+    </div>
+
+
+    <div class="tab-pane fade " id="tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis-network.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><div class="usuarios-container">  <div class="usuarios-header">    <div class="header-content">      <div class="header-icon">        <i class="bi bi-people-fill"></i>      </div>      <div>        <h2>Gestión de Usuarios</h2>        <p class="header-subtitle">Administra los usuarios del sistema</p>      </div>    </div>    <button class="btn btn-crear" (click)="abrirCrear()" type="button">      <i class="bi bi-plus-lg me-2"></i>Nuevo Usuario    </button>  </div>  <div *ngIf="mensajeExito" class="alert alert-success">    <i class="bi bi-check-circle-fill me-2"></i>{{ mensajeExito }}  </div>  <div *ngIf="mensajeError && !mostrarModal && !mostrarConfirmacion" class="alert alert-danger">    <i class="bi bi-exclamation-triangle-fill me-2"></i>{{ mensajeError }}  </div>  <div class="usuarios-toolbar">    <div class="search-box">      <i class="bi bi-search"></i>      <input        type="text"        class="form-control"        placeholder="Buscar por Nombre de Usuario o Rol"        [value]="filtroTexto"        (input)="onFiltroChange($any($event).target.value)"        name="filtroTexto"      >    </div>    <span class="contador-badge">      <i class="bi bi-people me-1"></i>      {{ usuariosFiltradosCache.length }} usuario{{ usuariosFiltradosCache.length !== 1 ? \'s\' : \'\' }}    </span>  </div>  <div *ngIf="cargando" class="loading-container">    <div class="spinner-usuarios"></div>    <p class="text-muted">Cargando usuarios...</p>  </div>  <div *ngIf="!cargando" class="table-container">    <table class="table table-hover">      <thead>      <tr>        <th>ID</th>        <th>Usuario</th>        <th>Correo</th>        <th>Rol</th>        <th class="text-end">Acciones</th>      </tr>      </thead>      <tbody>      <tr *ngFor="let usuario of usuariosFiltradosCache; trackBy: buscarPorUsuario">        <td class="id-cell" data-label="ID">#{{ usuario.id }}</td>        <td>          <div class="usuario-info">            <div class="usuario-avatar">              <i class="bi bi-person-circle"></i>            </div>            <span class="usuario-nombre">{{ usuario.nombreUsuario }}</span>          </div>        </td>        <td>          <div class="usuario-info">            <span class="usuario-nombre">{{ usuario.correo }}</span>          </div>        </td>        <td>            <span class="rol-badge rol-usuario" >              <i class="bi bi-person-fill"></i>              {{ usuario.rol }}            </span>        </td>        <td class="text-end">          <button class="btn btn-action btn-editar me-2"                  (click)="abrirEditar(usuario)"                  type="button"                  title="Editar usuario">            <i class="bi bi-pencil-square me-1"></i>            <span class="btn-text">Editar</span>          </button>          <button class="btn btn-action btn-eliminar"                  (click)="confirmarEliminar(usuario)"                  type="button"                  title="Eliminar usuario">            <i class="bi bi-trash-fill me-1"></i>            <span class="btn-text">Eliminar</span>          </button>        </td>      </tr>      <tr *ngIf="usuariosFiltradosCache.length === 0">        <td colspan="4" class="text-center py-5 text-muted">          <i class="bi bi-inbox fs-1 d-block mb-2"></i>          No se encontraron usuarios        </td>      </tr>      </tbody>    </table>  </div>  <div *ngIf="mostrarModal" class="modal-overlay" (click)="cerrarModal()">    <div class="modal-box" (click)="$event.stopPropagation()">      <div class="modal-header">        <div class="modal-icon">          <i class="bi" [class.bi-person-plus-fill]="!modoEdicion"             [class.bi-person-gear]="modoEdicion"></i>        </div>        <h4>{{ modoEdicion ? \'Editar Usuario\' : \'Nuevo Usuario\' }}</h4>      </div>      <div class="modal-body">        <div *ngIf="mensajeError && mostrarModal" class="alert alert-danger">          <i class="bi bi-exclamation-triangle-fill me-2"></i>{{ mensajeError }}        </div>        <form (ngSubmit)="guardar()" autocomplete="off">          <div class="form-floating mb-3">            <input              type="text"              class="form-control"              id="nombreUsuario"              [(ngModel)]="usuarioForm.nombreUsuario"              name="nombreUsuario"              required              placeholder="Nombre de usuario"              autocomplete="off"            >            <label for="nombreUsuario">              <i class="bi bi-person me-2"></i>Nombre de Usuario            </label>          </div>          <div class="form-floating mb-3">            <select              class="form-select"              id="rol"              [(ngModel)]="usuarioForm.rol"              name="rol"            >              <option *ngFor="let rol of roles" [value]="rol">{{ rol }}</option>            </select>            <label for="rol">              <i class="bi bi-shield me-2"></i>Rol            </label>          </div>          <div class="form-floating mb-3">            <input              type="email"              class="form-control"              id="email"              [(ngModel)]="usuarioForm.correo"              name="correo"              required              placeholder="Correo electrónico"              autocomplete="email"              [disabled]="modoEdicion"            >            <label for="email">              <i class="bi bi-envelope me-2"></i>              Correo Electrónico            </label>          </div>          <div class="form-floating mb-4" *ngIf="!modoEdicion">            <input              type="email"              class="form-control"              id="confirmarEmail"              [(ngModel)]="confirmarCorreo"              name="confirmarCorreo"              [required]="!modoEdicion"              placeholder="Confirmar correo electrónico"              autocomplete="email"            >            <label for="confirmarEmail">              <i class="bi bi-envelope-fill me-2"></i>Confirmar Correo              </label>          </div>          <div class="form-floating mb-3">            <input              type="password"              class="form-control"              id="contrasenia"              [(ngModel)]="usuarioForm.contrasenia"              name="contrasenia"              [required]="!modoEdicion"              placeholder="Contraseña"              minlength="6"              autocomplete="new-password"            >            <label for="contrasenia">              <i class="bi bi-lock me-2"></i>              {{ modoEdicion ? \'Nueva Contraseña (opcional)\' : \'Contraseña\' }}            </label>          </div>          <div class="form-floating mb-4">            <input              type="password"              class="form-control"              id="confirmarContrasenia"              [(ngModel)]="confirmarContrasenia"              name="confirmarContrasenia"              [required]="usuarioForm.contrasenia ? true : false"              placeholder="Confirmar contraseña"              autocomplete="new-password"            >            <label for="confirmarContrasenia">              <i class="bi bi-lock-fill me-2"></i>Confirmar Contraseña            </label>          </div>          <div class="modal-acciones">            <button type="submit" class="btn btn-guardar" [disabled]="guardando">              <i class="bi" [class.bi-check-lg]="!guardando"                 [class.bi-arrow-repeat]="guardando" [class.spin]="guardando"></i>              {{ guardando ? \'Guardando...\' : (modoEdicion ? \'Actualizar\' : \'Crear\') }}            </button>            <button type="button" class="btn btn-cancelar" (click)="cerrarModal()" [disabled]="guardando">              <i class="bi bi-x-lg me-2"></i>Cancelar            </button>          </div>        </form>      </div>    </div>  </div>  <div *ngIf="mostrarConfirmacion" class="modal-overlay" (click)="cancelarEliminar()">    <div class="modal-box modal-confirmacion" (click)="$event.stopPropagation()">      <div class="confirmacion-icono">        <i class="bi bi-exclamation-triangle-fill"></i>      </div>      <h4>¿Eliminar usuario?</h4>      <p class="confirmacion-texto">        Estás a punto de eliminar a <strong>{{ usuarioAEliminar?.nombreUsuario }}</strong>.        <br>Esta acción no se puede deshacer.      </p>      <div *ngIf="mensajeError && mostrarConfirmacion" class="alert alert-danger mt-3">        <i class="bi bi-exclamation-triangle-fill me-2"></i>{{ mensajeError }}      </div>      <div class="modal-acciones">        <button class="btn btn-eliminar-confirmar" (click)="eliminar()" [disabled]="guardando" type="button">          <i class="bi" [class.bi-trash-fill]="!guardando"             [class.bi-arrow-repeat]="guardando" [class.spin]="guardando"></i>          {{ guardando ? \'Eliminando...\' : \'Sí, Eliminar\' }}        </button>        <button class="btn btn-cancelar" (click)="cancelarEliminar()" [disabled]="guardando" type="button">          <i class="bi bi-x-lg me-2"></i>Cancelar        </button>      </div>    </div>  </div></div></div>'
+    var COMPONENTS = [{'name': 'App', 'selector': 'app-root'},{'name': 'AuditoriaComponent', 'selector': 'app-auditoria-component'},{'name': 'Busqueda', 'selector': 'app-busqueda'},{'name': 'HistorialComponent', 'selector': 'app-historial-component'},{'name': 'Login', 'selector': 'app-login'},{'name': 'Main', 'selector': 'app-main'},{'name': 'Mapa', 'selector': 'app-mapa'},{'name': 'Nav', 'selector': 'app-nav'},{'name': 'Perfil', 'selector': 'app-perfil'},{'name': 'Principal', 'selector': 'app-principal'},{'name': 'Registro', 'selector': 'app-registro'},{'name': 'UsuarioCrud', 'selector': 'app-usuario-crud'}];
+    var DIRECTIVES = [];
+    var ACTUAL_COMPONENT = {'name': 'UsuarioCrud'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'UsuarioCrud.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script>
+               $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               checkToggle(darkModeState);
+               if ($darkModeToggleSwitchers.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

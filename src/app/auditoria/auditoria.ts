@@ -4,6 +4,12 @@ import {AuditoriaService} from '../services/auditoria-service';
 import {Auditoria} from '../models/auditoria';
 import {HistorialService} from '../services/historial-service';
 
+/**
+ * Componente encargado de visualizar y filtrar
+ * los registros de auditoría del sistema.
+ * @author Juan Martinez
+ * @version 1.0
+ */
 @Component({
   selector: 'app-auditoria-component',
   standalone: false,
@@ -15,6 +21,7 @@ export class AuditoriaComponent implements OnInit {
   /** Servicio para la gestión de auditorías */
   private auditoriaService = inject(AuditoriaService);
 
+  /** Servicio para la gestión de historiales */
   private historialService = inject(HistorialService);
 
   /** Servicio para forzar la detección de cambios */
@@ -40,7 +47,6 @@ export class AuditoriaComponent implements OnInit {
 
   /** Subject utilizado para aplicar debounce al filtro */
   private filtroSubject = new Subject<string>();
-
 
   /**
    * Inicializa el componente y configura el filtro con debounce.
@@ -74,15 +80,11 @@ export class AuditoriaComponent implements OnInit {
       })
     ).subscribe({
       next: (response) => {
-        const body = response?.body || response;
         let lista: Auditoria[] = [];
 
-        if (body?.auditorias) {
-          lista = body.auditorias.reverse();
-        } else if (Array.isArray(body)) {
-          lista = body.reverse();
+        if (response.body) {
+          lista = response.body.reverse();
         }
-
         this.auditorias = lista;
       },
       error: () => {
@@ -94,6 +96,10 @@ export class AuditoriaComponent implements OnInit {
 
   /**
    * Retorna el identificador de una auditoría para optimizar el renderizado.
+   *
+   * @param index Índice del elemento en la lista.
+   * @param auditoria Auditoría actual.
+   * @returns ID de la auditoría o el índice si no existe.
    */
   trackByAuditoria(index: number, auditoria: Auditoria): number {
     return auditoria.id ?? index;
@@ -101,6 +107,8 @@ export class AuditoriaComponent implements OnInit {
 
   /**
    * Actualiza el valor del filtro y emite el cambio.
+   *
+   * @param valor Texto ingresado por el usuario.
    */
   onFiltroChange(valor: string): void {
     this.filtroTexto = valor;

@@ -58,7 +58,7 @@
       </thead>
       <tbody>
       <tr *ngFor="let usuario of usuariosFiltradosCache; trackBy: buscarPorUsuario">
-        <td class="id-cell">#{{ usuario.id }}</td>
+        <td class="id-cell" data-label="ID">#{{ usuario.id }}</td>
         <td>
           <div class="usuario-info">
             <div class="usuario-avatar">
@@ -114,9 +114,6 @@
              [class.bi-person-gear]="modoEdicion"></i>
         </div>
         <h4>{{ modoEdicion ? 'Editar Usuario' : 'Nuevo Usuario' }}</h4>
-        <button class="btn btn-cerrar" (click)="cerrarModal()" type="button">
-          <i class="bi bi-x-lg"></i>
-        </button>
       </div>
 
       <div class="modal-body">

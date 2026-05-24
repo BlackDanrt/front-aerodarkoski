@@ -11,6 +11,12 @@ import {routerGuard} from './guards/router-guard';
 import {Busqueda} from './busqueda/busqueda';
 import {HistorialComponent} from './historial-component/historial-component';
 
+/**
+ * Configuración de rutas de la aplicación.
+ *
+ * Define la navegación entre componentes y los permisos
+ * necesarios para acceder a las rutas protegidas.
+ */
 const routes: Routes = [
 
   { path: 'login', component: Login},
@@ -25,6 +31,15 @@ const routes: Routes = [
   { path: '', redirectTo: '/main', pathMatch: 'full'},
 ];
 
+/**
+ * Módulo encargado de la configuración del enrutamiento
+ * principal de la aplicación.
+ *
+ * Gestiona la navegación entre vistas, las redirecciones
+ * y la protección de rutas mediante guards.
+ * @author Juan Martinez
+ * @version 1.0
+ */
 @NgModule({
   imports: [RouterModule.forRoot(routes, {
     anchorScrolling: 'enabled',
@@ -32,5 +47,4 @@ const routes: Routes = [
   })],
   exports: [RouterModule]
 })
-export class AppRoutingModule {
-}
+export class AppRoutingModule {}

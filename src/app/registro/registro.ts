@@ -4,6 +4,12 @@ import {AuthService} from '../services/auth-service';
 import {Router} from '@angular/router';
 import {ToastService} from '../services/toast-service';
 
+/**
+ * Componente encargado del registro de nuevos usuarios
+ * dentro del sistema.
+ * @author Juan Martinez
+ * @version 1.0
+ */
 @Component({
   selector: 'app-registro',
   standalone: false,
@@ -21,6 +27,7 @@ export class Registro {
   /** Servicio de navegación entre rutas */
   private router = inject(Router);
 
+  /** Servicio para mostrar notificaciones al usuario. */
   private toast = inject(ToastService);
 
   /** Datos del usuario a registrar */
@@ -29,11 +36,19 @@ export class Registro {
     contrasenia: '',
   }
 
+  /** Confirmación del correo electrónico. */
   confirmarCorreo = '';
+
+  /** Confirmación de la contraseña. */
   confirmarContrasenia = '';
 
+  /** Indica si el proceso de registro está en ejecución. */
   cargando = false;
 
+  /**
+   * Valida la información ingresada y realiza
+   * el registro de un nuevo usuario.
+   */
   registrarse() {
     if(this.cargando) return;
     else this.cargando = true;

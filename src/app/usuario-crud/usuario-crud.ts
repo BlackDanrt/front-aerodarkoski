@@ -5,6 +5,11 @@ import {UsuarioService} from '../services/usuario-service';
 import {JwtService} from '../services/jwt-service';
 import {debounceTime, distinctUntilChanged, finalize, Subject} from 'rxjs';
 
+/**
+ * Componente encargado de la gestión de usuarios del sistema(CRUD).
+ * @author Juan Martinez
+ * @version 1.0
+ */
 @Component({
   selector: 'app-usuario-crud',
   standalone: false,
@@ -115,18 +120,12 @@ export class UsuarioCrud {
       })
     ).subscribe({
       next: (response) => {
-        const body = response?.body || response;
         let lista: Usuario[] = [];
-
-        if (body?.usuarios) {
-          lista = body.usuarios;
-        } else if (Array.isArray(body)) {
-          lista = body;
+        if (response.body) {
+          lista = response.body;
         }
-
-
-        this.usuarios = lista.filter(u => u.id !== this.idUsuarioActual);
-      },
+        this.usuarios = lista.filter(u => u.id !==this.idUsuarioActual);
+        },
       error: () => {
         this.mensajeError = 'Error al cargar los usuarios. Intente nuevamente.';
         this.usuarios = [];

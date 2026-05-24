@@ -9,20 +9,17 @@
 }
 
 .contenido {
-  background: linear-gradient(to bottom, #00376E 0%, #000000 150%);
+  background: linear-gradient(to bottom, var(--color-principal) 0%, var(--color-secundario) 180%);
   padding: 40px 30px;
   border-radius: 5px;
-  box-shadow: 0 0 30px rgba(74, 231, 255, 0.4);
+  box-shadow: 0 0 40px var(--color-terciario);
   width: 100%;
   max-width: 450px;
   text-align: center;
-  color: #E7E7E7;
-  border: 1px solid #27C5F5;
 }
 
 .contenido h2 {
   color: #fff;
-  text-shadow: 0 0 10px #38E8B5;
   margin-top: 0;
   margin-bottom: 30px;
   letter-spacing: 3px;
@@ -37,7 +34,6 @@
 
 .form-label {
   color: #fff;
-  text-shadow: 0 0 10px #38E8B5;
   display: block;
   margin-bottom: 8px;
   font-weight: 600;
@@ -49,13 +45,19 @@
 .form-control {
   width: 100%;
   padding: 12px 14px;
-  background: #121212;
-  border: 1px solid #333;
+  background: var(--color-terciario);
+  border: 1px solid var(--color-secundario);
   border-radius: 10px;
-  color: white;
+  color: #000b;
   box-sizing: border-box;
-  transition: all 0.3s ease;
+  transition: all 0.4s ease;
   font-size: 14px;
+}
+
+.form-group:focus {
+  border-color: var(--color-secundario);
+  box-shadow: 0 0 15px #10598A;
+  background: var(--color-terciario);
 }
 
 .form-control:focus {
@@ -72,10 +74,7 @@
 .btn-crear {
   width: 100%;
   padding: 14px;
-  background: linear-gradient(to right, #00c6fb, #005bea);
-  border: none;
-  border-radius: 10px;
-  color: white;
+  background: var(--color-secundario);
   font-weight: bold;
   font-size: 16px;
   cursor: pointer;
@@ -83,11 +82,14 @@
   text-transform: uppercase;
   letter-spacing: 1px;
   margin-top: 10px;
+  color: var(--color-terciario);
+  border: 2px solid var(--color-secundario);
+  border-radius: 10px;
 }
 
 .btn-crear:hover {
   transform: translateY(-3px);
-  box-shadow: 0 10px 20px rgba(106, 13, 173, 0.5);
+  box-shadow: 0 10px 30px rgb(248, 250, 252);
 }
 
 .btn-crear:active {
@@ -100,12 +102,4 @@
   transform: none !important;
 }
 
-@media (max-width: 768px) {
-  .register {
-    padding: 40px 15px;
-  }
-  .contenido {
-    padding: 30px 20px;
-  }
-}
 

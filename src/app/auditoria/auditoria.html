@@ -21,7 +21,7 @@
           <input
             type="text"
             class="form-control"
-            placeholder="Buscar por Nombre de Usuario o Acción realizada"
+            placeholder="Buscar por Nombre de Usuario o Acción "
             [value]="filtroTexto"
             (input)="onFiltroChange($any($event).target.value)"
             name="filtroTexto"
@@ -29,13 +29,13 @@
         </div>
         <span class="contador-badge">
            <i class="bi bi-people me-1"></i>
-          {{ auditoriasFiltradasCache.length }} Auditoria{{ auditoriasFiltradasCache.length !== 1 ? 's' : '' }}
+          {{ auditoriasFiltradasCache.length }} Registro{{ auditoriasFiltradasCache.length !== 1 ? 's' : '' }}
         </span>
       </div>
 
       <div *ngIf="cargando" class="loading-container">
-        <div class="spinner-perfil"></div>
-        <p>Cargando registros de auditoría...</p>
+        <div class="bi bi-exclamation-triangle-fill spinner-perfil"></div>
+        <p class="text-muted">Cargando registros de auditoría...</p>
       </div>
 
       <div *ngIf="!cargando" class="table-container">
@@ -53,25 +53,25 @@
           </thead>
           <tbody>
           <tr *ngFor="let auditoria of auditoriasFiltradasCache; trackBy: trackByAuditoria">
-            <td class="id-cell">#{{ auditoria.id }}</td>
-            <td>{{ auditoria.idUsuario ?? 'N/A' }}</td>
-            <td class="cell-bold">{{ auditoria.nombreUsuario || 'Sistema' }}</td>
-            <td>
+            <td class="id-cell" data-label="ID">#{{ auditoria.id }}</td>
+            <td data-label="ID Usuario">{{ auditoria.idUsuario ?? 'N/A' }}</td>
+            <td class="cell-bold" data-label="Nombre Usuario">{{ auditoria.nombreUsuario || 'Sistema' }}</td>
+            <td data-label="Acción">
                 <span class="badge-accion" [class]="'accion-' + (auditoria.accion | lowercase)">
                   {{ auditoria.accion }}
                 </span>
             </td>
-            <td>
+            <td data-label="Rol">
                 <span class="badge-rol" [class]="'rol-' + (auditoria.rolUsuario | lowercase)">
                   {{ auditoria.rolUsuario }}
                 </span>
             </td>
-            <td>
+            <td data-label="Servicio">
               <span class="badge-servicio" [class]="'servicio-' + (auditoria.servicioUsado | lowercase)">
                 {{ auditoria.servicioUsado }}
               </span>
             </td>
-            <td>{{ auditoria.fecha | date:'dd/MM/yyyy HH:mm' }}</td>
+            <td data-label="Fecha">{{ auditoria.fecha | date:'dd/MM/yyyy HH:mm' }}</td>
           </tr>
           <tr *ngIf="auditoriasFiltradasCache.length === 0">
             <td colspan="7" class="sin-datos">No se encontraron registros</td>

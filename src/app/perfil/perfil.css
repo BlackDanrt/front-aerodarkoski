@@ -8,20 +8,42 @@
 }
 
 .card-config {
-  background-color: #ffffff;
+  background-color: var(--color-terciario);
   padding: 40px;
-  border-radius: 10px;
+  border-radius: 2px;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
   width: 100%;
   max-width: 500px;
   text-align: center;
 }
 
+.error-sesion {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 3rem 1rem;
+  min-height: 50vh;
+}
+
+.error-sesion h3 {
+  color: #dc2626;
+  font-size: 1.25rem;
+  margin-bottom: 0.5rem;
+}
+
+.error-sesion p {
+  color: #6b7280;
+  font-size: 0.95rem;
+}
+
 .titulo-seccion {
-  color: #00376E;
+  color: var(--color-texto);
   margin-bottom: 30px;
   font-size: 2rem;
-  font-weight: bold;
+  padding: 10px;
+  border-radius: 10px;
 }
 
 .campo-grupo {
@@ -47,7 +69,7 @@ input {
 }
 
 input:focus {
-  border-color: #00376E;
+  border-color: var(--color-secundario);
   outline: none;
   box-shadow: 0 0 5px rgba(0, 55, 110, 0.2);
 }
@@ -76,12 +98,12 @@ input:focus {
 }
 
 .btn-primary {
-  background-color: #00376E;
+  background: var(--color-btn-crear);
   color: white;
 }
 
 .btn-primary:hover:not(:disabled) {
-  background-color: #002244;
+  background: var(--color-btn-crear-hover);
 }
 
 .btn-primary:disabled {
@@ -118,7 +140,7 @@ input:focus {
   width: 50px;
   height: 50px;
   border: 4px solid rgba(0, 55, 110, 0.15);
-  border-top-color: #00376E;
+  border-top-color: var(--color-secundario);
   border-radius: 50%;
   animation: spin 1s linear infinite;
 }
